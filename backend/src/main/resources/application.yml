@@ -1,0 +1,30 @@
+spring:
+  web:
+    resources:
+      static-locations:
+        - classpath:/static/
+        - file:C:/web/education_platform
+        - file:/home/ubuntu/education/data
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    include: oauth
+  application:
+    name: Education_platform
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 1000
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/education_platform?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password:
+jwt:
+  secret: fa6f44df76295a0a50ca08d947fc2552370d6d71ba4d045253fac165753b20f2a69b83f6830343bbd22aa33e2e6e0ff4169510fd829ada5f0bfec40251cc233d
+  accessTokenExpirationTime: 3600000
+  refreshTokenExpirationTime: 86400000
