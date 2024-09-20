@@ -22,16 +22,22 @@ public class QLesson extends EntityPathBase<Lesson> {
 
     public static final QLesson lesson = new QLesson("lesson");
 
+<<<<<<< HEAD
     public final StringPath content = createString("content");
 
     public final DateTimePath<java.time.LocalDateTime> createDate = createDateTime("createDate", java.time.LocalDateTime.class);
 
     public final NumberPath<Double> discount = createNumber("discount", Double.class);
 
+=======
+    public final DateTimePath<java.time.LocalDateTime> createDate = createDateTime("createDate", java.time.LocalDateTime.class);
+
+>>>>>>> db9d9cf0288941e1b51684e0a9419f267aab67cd
     public final NumberPath<Long> lessonId = createNumber("lessonId", Long.class);
 
     public final DateTimePath<java.time.LocalDateTime> modifyDate = createDateTime("modifyDate", java.time.LocalDateTime.class);
 
+<<<<<<< HEAD
     public final NumberPath<Integer> price = createNumber("price", Integer.class);
 
     public final QSiteUser siteUser;
@@ -40,6 +46,10 @@ public class QLesson extends EntityPathBase<Lesson> {
 
     public final StringPath title = createString("title");
 
+=======
+    public final QSiteUser siteUser;
+
+>>>>>>> db9d9cf0288941e1b51684e0a9419f267aab67cd
     public QLesson(String variable) {
         this(Lesson.class, forVariable(variable), INITS);
     }

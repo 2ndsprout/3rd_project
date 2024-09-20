@@ -34,5 +34,4 @@ public class Lesson {
 
     private double discount;
 
-
 }
