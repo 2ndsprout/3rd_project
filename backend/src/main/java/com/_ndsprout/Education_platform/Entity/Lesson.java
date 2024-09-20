@@ -23,4 +23,16 @@ public class Lesson {
     private LocalDateTime createDate;
 
     private LocalDateTime modifyDate;
+
+    private String title;
+
+    private String subtitle;
+
+    private String content;
+
+    private int price;
+
+    private double discount;
+
+
 }
