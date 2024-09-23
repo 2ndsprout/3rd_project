@@ -10,21 +10,20 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Lesson {
-
+public class Article {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long lessonId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long articleId;
 
-    @OneToMany
-    private List<SiteUser> siteUserList;
+    private String title;
+
+    private String content;
 
     @CreatedDate
     private LocalDateTime createDate;
@@ -32,26 +31,17 @@ public class Lesson {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    private String title;
+    @ManyToOne
+    private SiteUser siteUser;
 
-    private String subtitle;
-
-    private String content;
-
-    private int price;
-
-    private double discount;
-
-    @OneToMany(cascade = CascadeType.REMOVE)
-    private List<Section> sectionList;
+    @ManyToOne
+    private Community community;
 
     @Builder
-    public Lesson(SiteUser siteUser,String title, String subtitle,String content,int price){
-        this.siteUserList.add(siteUser);
+    public Article(String title, String content,SiteUser siteUser,Community community){
         this.title = title;
-        this.subtitle = subtitle;
-        this.content = content;
-        this.price = price;
+        this.content =content;
+        this.siteUser =siteUser;
+        this.community = community;
     }
-
 }

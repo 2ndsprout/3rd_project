@@ -1,11 +1,9 @@
 package com._ndsprout.Education_platform.Entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.OneToMany;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,25 +13,20 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class SiteUser {
+public class Category {
 
     @Id
-    private String username;
+    private String categoryName;
 
-    @Column
-    @Size(min = 8, max = 11)
-    private String password;
-
-    @Email
-    private String email;
-
-    private String nickname;
+    @OneToMany
+    private List<Category> categoryList;
 
     @CreatedDate
     private LocalDateTime createDate;
@@ -41,18 +34,8 @@ public class SiteUser {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    private int phoneNumber;
-
-    private int point;
-
-@Builder
-    public SiteUser(String username,String password,String email, String nickname,int phoneNumber,int point){
-    this.username = username;
-    this.password = password;
-    this.email = email;
-    this.nickname = nickname;
-    this.phoneNumber = phoneNumber;
-    this.point = point;
-}
+    @Builder Category(String categoryName){
+        this.categoryName =categoryName;
+    }
 
 }

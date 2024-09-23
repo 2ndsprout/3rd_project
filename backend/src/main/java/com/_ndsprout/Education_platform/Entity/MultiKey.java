@@ -1,11 +1,8 @@
 package com._ndsprout.Education_platform.Entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,19 +18,11 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class SiteUser {
-
+public class MultiKey {
     @Id
-    private String username;
+    private String key;
 
-    @Column
-    @Size(min = 8, max = 11)
-    private String password;
-
-    @Email
-    private String email;
-
-    private String nickname;
+    private String value;
 
     @CreatedDate
     private LocalDateTime createDate;
@@ -41,18 +30,9 @@ public class SiteUser {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    private int phoneNumber;
-
-    private int point;
-
-@Builder
-    public SiteUser(String username,String password,String email, String nickname,int phoneNumber,int point){
-    this.username = username;
-    this.password = password;
-    this.email = email;
-    this.nickname = nickname;
-    this.phoneNumber = phoneNumber;
-    this.point = point;
-}
-
+    @Builder
+    public MultiKey(String key,String value){
+        this.key =  key;
+        this.value = value;
+    }
 }
