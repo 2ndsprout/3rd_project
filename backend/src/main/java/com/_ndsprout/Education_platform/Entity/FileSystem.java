@@ -20,9 +20,9 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class FileSystem {
     @Id
-    private String key;
+    private String k;
 
-    private String value;
+    private String v;
 
     private int playTime;
 
@@ -40,8 +40,8 @@ public class FileSystem {
 
     @Builder
     public FileSystem(String key,String value,int playTime,String name,int height,int width){
-        this.key = key;
-        this.value = value;
+        this.k = key;
+        this.v = value;
         this.playTime = playTime;
         this.name = name;
         this.height = height;

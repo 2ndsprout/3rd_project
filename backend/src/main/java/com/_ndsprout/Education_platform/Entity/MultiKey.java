@@ -20,9 +20,9 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class MultiKey {
     @Id
-    private String key;
+    private String k;
 
-    private String value;
+    private String v;
 
     @CreatedDate
     private LocalDateTime createDate;
@@ -32,7 +32,7 @@ public class MultiKey {
 
     @Builder
     public MultiKey(String key,String value){
-        this.key =  key;
-        this.value = value;
+        this.k =  key;
+        this.v = value;
     }
 }
