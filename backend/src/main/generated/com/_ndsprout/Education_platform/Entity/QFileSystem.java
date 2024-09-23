@@ -23,7 +23,7 @@ public class QFileSystem extends EntityPathBase<FileSystem> {
 
     public final NumberPath<Integer> height = createNumber("height", Integer.class);
 
-    public final StringPath key = createString("key");
+    public final StringPath k = createString("k");
 
     public final DateTimePath<java.time.LocalDateTime> modifyDate = createDateTime("modifyDate", java.time.LocalDateTime.class);
 
@@ -31,7 +31,7 @@ public class QFileSystem extends EntityPathBase<FileSystem> {
 
     public final NumberPath<Integer> playTime = createNumber("playTime", Integer.class);
 
-    public final StringPath value = createString("value");
+    public final StringPath v = createString("v");
 
     public final NumberPath<Integer> width = createNumber("width", Integer.class);
 

@@ -21,11 +21,11 @@ public class QMultiKey extends EntityPathBase<MultiKey> {
 
     public final DateTimePath<java.time.LocalDateTime> createDate = createDateTime("createDate", java.time.LocalDateTime.class);
 
-    public final StringPath key = createString("key");
+    public final StringPath k = createString("k");
 
     public final DateTimePath<java.time.LocalDateTime> modifyDate = createDateTime("modifyDate", java.time.LocalDateTime.class);
 
-    public final StringPath value = createString("value");
+    public final StringPath v = createString("v");
 
     public QMultiKey(String variable) {
         super(MultiKey.class, forVariable(variable));
