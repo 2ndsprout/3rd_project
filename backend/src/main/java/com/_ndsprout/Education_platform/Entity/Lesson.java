@@ -53,4 +53,5 @@ public class Lesson {
         this.content = content;
         this.price = price;
     }
+
 }
