@@ -1,5 +1,6 @@
 package com._ndsprout.Education_platform.Entity;
 
+
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,21 +11,19 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Lesson {
+public class Section {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long lessonId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long sectionId;
 
-    @OneToMany
-    private List<SiteUser> siteUserList;
+    private String subtitle;
 
     @CreatedDate
     private LocalDateTime createDate;
@@ -32,25 +31,9 @@ public class Lesson {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    private String title;
-
-    private String subtitle;
-
-    private String content;
-
-    private int price;
-
-    private double discount;
-
-    @OneToMany(cascade = CascadeType.REMOVE)
-    private List<Section> sectionList;
-
     @Builder
-    public Lesson(SiteUser siteUser,String title, String subtitle,String content,int price){
-        this.siteUserList.add(siteUser);
-        this.title = title;
+    public Section(String subtitle) {
         this.subtitle = subtitle;
-        this.content = content;
-        this.price = price;
     }
+
 }

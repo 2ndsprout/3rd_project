@@ -13,18 +13,23 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Setter
 @Getter
 @NoArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
-public class Lesson {
+public class Reply {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long lessonId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @OneToMany
-    private List<SiteUser> siteUserList;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Article article;
+
+    @OneToMany(cascade = CascadeType.REMOVE)
+    private List<Reply> replyList;
+
+    private String content;
 
     @CreatedDate
     private LocalDateTime createDate;
@@ -32,25 +37,14 @@ public class Lesson {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    private String title;
-
-    private String subtitle;
-
-    private String content;
-
-    private int price;
-
-    private double discount;
-
-    @OneToMany(cascade = CascadeType.REMOVE)
-    private List<Section> sectionList;
+    @ManyToOne
+    private SiteUser siteUser;
 
     @Builder
-    public Lesson(SiteUser siteUser,String title, String subtitle,String content,int price){
-        this.siteUserList.add(siteUser);
-        this.title = title;
-        this.subtitle = subtitle;
+    public Reply(Article article, String content, SiteUser siteUser) {
+        this.article = article;
         this.content = content;
-        this.price = price;
+        this.siteUser = siteUser;
     }
+
 }
