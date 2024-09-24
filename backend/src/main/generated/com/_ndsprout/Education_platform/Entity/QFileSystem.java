@@ -29,7 +29,7 @@ public class QFileSystem extends EntityPathBase<FileSystem> {
 
     public final StringPath name = createString("name");
 
-    public final NumberPath<Integer> playTime = createNumber("playTime", Integer.class);
+    public final NumberPath<Long> playTime = createNumber("playTime", Long.class);
 
     public final StringPath v = createString("v");
 

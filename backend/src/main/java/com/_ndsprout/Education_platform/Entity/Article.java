@@ -32,10 +32,10 @@ public class Article {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private SiteUser siteUser;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Community community;
 
     @Builder

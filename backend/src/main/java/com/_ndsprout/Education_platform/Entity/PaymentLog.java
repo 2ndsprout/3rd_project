@@ -1,5 +1,6 @@
 package com._ndsprout.Education_platform.Entity;
 
+import com._ndsprout.Education_platform.Enum.PaymentType;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,12 +32,12 @@ public class PaymentLog {
     @LastModifiedDate
     private LocalDateTime cancelDate;
 
-    private Integer paymentType;
+    private PaymentType paymentType;
 
     private Integer usedPoint;
 
     @Builder
-    public PaymentLog(SiteUser siteUser, Integer paymentType, Integer usedPoint){
+    public PaymentLog(SiteUser siteUser, PaymentType paymentType, Integer usedPoint){
         this.siteUser =siteUser;
         this.paymentType = paymentType;
         this.usedPoint = usedPoint;

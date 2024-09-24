@@ -25,7 +25,7 @@ public class FileSystem {
 
     private String v;
 
-    private Integer playTime;
+    private Long playTime; // 나중에 변경
 
     private String name;
 
@@ -40,7 +40,7 @@ public class FileSystem {
     private LocalDateTime modifyDate;
 
     @Builder
-    public FileSystem(String key,String value,int playTime,String name,int height,int width){
+    public FileSystem(String key, String value, Long playTime,String name,Integer height,Integer width){
         this.k = key;
         this.v = value;
         this.playTime = playTime;

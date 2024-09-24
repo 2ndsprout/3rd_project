@@ -29,6 +29,6 @@ public class Tag {
     private LocalDateTime modifyDate;
     @Builder
     public Tag(String tagName){
-        this.tagName =tagName;
+        this.tagName = tagName;
     }
 }

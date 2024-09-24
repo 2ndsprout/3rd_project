@@ -10,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,7 +28,7 @@ public class Reply {
     private Article article;
 
     @OneToMany(cascade = CascadeType.REMOVE)
-    private List<Reply> replyList;
+    private List<Reply> replyList = new ArrayList<>();
 
     private String content;
 
