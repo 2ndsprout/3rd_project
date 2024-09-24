@@ -29,7 +29,7 @@ public class QSiteUser extends EntityPathBase<SiteUser> {
 
     public final StringPath password = createString("password");
 
-    public final NumberPath<Integer> phoneNumber = createNumber("phoneNumber", Integer.class);
+    public final StringPath phoneNumber = createString("phoneNumber");
 
     public final NumberPath<Integer> point = createNumber("point", Integer.class);
 
