@@ -20,7 +20,7 @@ public class ArticleTag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ArticleTagId;
+    private Long articleTagId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Article article;

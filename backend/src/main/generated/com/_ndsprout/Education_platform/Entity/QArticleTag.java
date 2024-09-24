@@ -24,7 +24,7 @@ public class QArticleTag extends EntityPathBase<ArticleTag> {
 
     public final QArticle article;
 
-    public final NumberPath<Long> ArticleTagId = createNumber("ArticleTagId", Long.class);
+    public final NumberPath<Long> articleTagId = createNumber("articleTagId", Long.class);
 
     public final DateTimePath<java.time.LocalDateTime> createDate = createDateTime("createDate", java.time.LocalDateTime.class);
 

@@ -15,7 +15,7 @@ public class ChatParticipants {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long chatParticipantsId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private SiteUser siteUser;

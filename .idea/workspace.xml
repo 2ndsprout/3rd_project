@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f60d692-f74c-4539-a3eb-ae0df5d8a752" name="Changes" comment="" />
+    <list default="true" id="5f60d692-f74c-4539-a3eb-ae0df5d8a752" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ArticleTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ArticleTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/CartNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/CartNotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ChatMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ChatMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ChatParticipants.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ChatParticipants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/FileSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/FileSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/LessonTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/LessonTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/LessonUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/LessonUser.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

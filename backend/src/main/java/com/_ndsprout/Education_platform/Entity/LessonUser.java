@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 public class LessonUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long lessonUserId;
 
     @OneToOne
     private Lesson lesson;

@@ -19,7 +19,7 @@ public class LessonTag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long lessonTagId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Tag tag;
