@@ -41,12 +41,12 @@ public class SiteUser {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     private Integer point;
 
 @Builder
-    public SiteUser(String username,String password,String email, String nickname,int phoneNumber,int point){
+    public SiteUser(String username,String password,String email, String nickname,String phoneNumber,Integer point){
     this.username = username;
     this.password = password;
     this.email = email;
