@@ -38,9 +38,9 @@ public class Lesson {
 
     private String content;
 
-    private int price;
+    private Integer price;
 
-    private double discount;
+    private Double discount;
 
     @OneToMany(cascade = CascadeType.REMOVE)
     private List<Section> sectionList;

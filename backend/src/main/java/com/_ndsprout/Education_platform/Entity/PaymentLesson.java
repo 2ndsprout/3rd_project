@@ -23,9 +23,9 @@ public class PaymentLesson {
 
     private String title;
 
-    private int price;
+    private Integer price;
 
-    private double discount;
+    private Double discount;
 
     private Long lessonId;
 

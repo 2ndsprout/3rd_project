@@ -24,13 +24,13 @@ public class FileSystem {
 
     private String v;
 
-    private int playTime;
+    private Integer playTime;
 
     private String name;
 
-    private int height;
+    private Integer height;
 
-    private int width;
+    private Integer width;
 
     @CreatedDate
     private LocalDateTime createDate;
