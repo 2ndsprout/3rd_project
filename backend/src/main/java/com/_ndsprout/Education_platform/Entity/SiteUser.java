@@ -41,9 +41,9 @@ public class SiteUser {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    private int phoneNumber;
+    private Integer phoneNumber;
 
-    private int point;
+    private Integer point;
 
 @Builder
     public SiteUser(String username,String password,String email, String nickname,int phoneNumber,int point){
