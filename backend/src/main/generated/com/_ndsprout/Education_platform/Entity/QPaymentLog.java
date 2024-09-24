@@ -28,7 +28,7 @@ public class QPaymentLog extends EntityPathBase<PaymentLog> {
 
     public final NumberPath<Long> paymentLogId = createNumber("paymentLogId", Long.class);
 
-    public final NumberPath<Integer> paymentType = createNumber("paymentType", Integer.class);
+    public final EnumPath<com._ndsprout.Education_platform.Enum.PaymentType> paymentType = createEnum("paymentType", com._ndsprout.Education_platform.Enum.PaymentType.class);
 
     public final QSiteUser siteUser;
 

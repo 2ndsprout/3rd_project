@@ -24,11 +24,13 @@ public class QArticleTag extends EntityPathBase<ArticleTag> {
 
     public final QArticle article;
 
-    public final NumberPath<Long> ArticleTagId = createNumber("ArticleTagId", Long.class);
+    public final NumberPath<Long> articleTagId = createNumber("articleTagId", Long.class);
 
     public final DateTimePath<java.time.LocalDateTime> createDate = createDateTime("createDate", java.time.LocalDateTime.class);
 
     public final DateTimePath<java.time.LocalDateTime> modifyDate = createDateTime("modifyDate", java.time.LocalDateTime.class);
+
+    public final QTag tag;
 
     public QArticleTag(String variable) {
         this(ArticleTag.class, forVariable(variable), INITS);
@@ -49,6 +51,7 @@ public class QArticleTag extends EntityPathBase<ArticleTag> {
     public QArticleTag(Class<? extends ArticleTag> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.article = inits.isInitialized("article") ? new QArticle(forProperty("article"), inits.get("article")) : null;
+        this.tag = inits.isInitialized("tag") ? new QTag(forProperty("tag")) : null;
     }
 
 }

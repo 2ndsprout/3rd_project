@@ -1,6 +1,7 @@
 package com._ndsprout.Education_platform.Entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +20,7 @@ public class LessonTag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long lessonTagId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Tag tag;
@@ -33,4 +34,9 @@ public class LessonTag {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
+    @Builder
+    public LessonTag (Tag tag, Lesson lesson) {
+        this.tag = tag;
+        this.lesson = lesson;
+    }
 }

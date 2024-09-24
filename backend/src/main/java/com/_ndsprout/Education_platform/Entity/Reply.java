@@ -10,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,13 +22,13 @@ public class Reply {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long replyId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Article article;
 
     @OneToMany(cascade = CascadeType.REMOVE)
-    private List<Reply> replyList;
+    private List<Reply> replyList = new ArrayList<>();
 
     private String content;
 

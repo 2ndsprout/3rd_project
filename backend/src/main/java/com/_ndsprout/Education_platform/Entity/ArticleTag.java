@@ -20,10 +20,13 @@ public class ArticleTag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ArticleTagId;
+    private Long articleTagId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Article article;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Tag tag;
 
     @CreatedDate
     private LocalDateTime createDate;
@@ -32,7 +35,8 @@ public class ArticleTag {
     private LocalDateTime modifyDate;
 
     @Builder
-    public ArticleTag(Article article) {
+    public ArticleTag(Tag tag, Article article) {
         this.article = article;
+        this.tag = tag;
     }
 }

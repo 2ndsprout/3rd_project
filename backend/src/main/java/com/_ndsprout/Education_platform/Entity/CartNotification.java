@@ -13,9 +13,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Getter
 @NoArgsConstructor
 public class CartNotification {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cartNotification;
+    private Long cartNotificationId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Notification notification;

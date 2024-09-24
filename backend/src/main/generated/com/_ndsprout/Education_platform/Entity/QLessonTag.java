@@ -24,9 +24,9 @@ public class QLessonTag extends EntityPathBase<LessonTag> {
 
     public final DateTimePath<java.time.LocalDateTime> createDate = createDateTime("createDate", java.time.LocalDateTime.class);
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
-
     public final QLesson lesson;
+
+    public final NumberPath<Long> lessonTagId = createNumber("lessonTagId", Long.class);
 
     public final DateTimePath<java.time.LocalDateTime> modifyDate = createDateTime("modifyDate", java.time.LocalDateTime.class);
 

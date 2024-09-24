@@ -10,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class Lesson {
     private Long lessonId;
 
     @OneToMany
-    private List<SiteUser> siteUserList;
+    private List<SiteUser> siteUserList = new ArrayList<>();
 
     @CreatedDate
     private LocalDateTime createDate;
@@ -42,11 +43,11 @@ public class Lesson {
 
     private Double discount;
 
-    @OneToMany(cascade = CascadeType.REMOVE)
-    private List<Section> sectionList;
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Section> sectionList = new ArrayList<>();
 
     @Builder
-    public Lesson(SiteUser siteUser,String title, String subtitle,String content,int price){
+    public Lesson(SiteUser siteUser,String title, String subtitle,String content,Integer price){
         this.siteUserList.add(siteUser);
         this.title = title;
         this.subtitle = subtitle;

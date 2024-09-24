@@ -1,6 +1,7 @@
 package com._ndsprout.Education_platform.Entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,5 +23,11 @@ public class ReviewNotification {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Review review;
+
+    @Builder
+    public ReviewNotification (Notification notification, Review review) {
+        this.notification = notification;
+        this.review = review;
+    }
 
 }
