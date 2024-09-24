@@ -1,11 +1,13 @@
 package com._ndsprout.Education_platform.Entity;
 
+import com._ndsprout.Education_platform.Enum.PaymentType;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
@@ -27,14 +29,15 @@ public class PaymentLog {
     @CreatedDate
     private LocalDateTime paymentDate;
 
+    @LastModifiedDate
     private LocalDateTime cancelDate;
 
-    private Integer paymentType;
+    private PaymentType paymentType;
 
     private Integer usedPoint;
 
     @Builder
-    public PaymentLog(SiteUser siteUser, Integer paymentType, Integer usedPoint){
+    public PaymentLog(SiteUser siteUser, PaymentType paymentType, Integer usedPoint){
         this.siteUser =siteUser;
         this.paymentType = paymentType;
         this.usedPoint = usedPoint;

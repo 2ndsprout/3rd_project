@@ -1,6 +1,7 @@
 package com._ndsprout.Education_platform.Entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,4 +38,13 @@ public class PaymentLesson {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private  PaymentLog paymentLog;
+
+    @Builder
+    public PaymentLesson (String title, Integer price, Double discount, Long lessonId, PaymentLog paymentLog) {
+        this.title = title;
+        this.price = price;
+        this.discount = discount;
+        this.lessonId = lessonId;
+        this.paymentLog = paymentLog;
+    }
 }

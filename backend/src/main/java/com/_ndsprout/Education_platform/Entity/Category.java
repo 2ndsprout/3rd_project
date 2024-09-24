@@ -1,9 +1,6 @@
 package com._ndsprout.Education_platform.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,8 +23,11 @@ public class Category {
     @Id
     private String categoryName;
 
-    @OneToMany
-    private List<Category> categoryList;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Category parent;
+
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Category> children = new ArrayList<>();
 
     @CreatedDate
     private LocalDateTime createDate;
@@ -34,8 +35,9 @@ public class Category {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    @Builder Category(String categoryName){
-        this.categoryName =categoryName;
+    @Builder Category(String categoryName, Category parent){
+        this.categoryName = categoryName;
+        this.parent = parent;
     }
 
 }

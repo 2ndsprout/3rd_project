@@ -22,9 +22,9 @@ public class QChatParticipants extends EntityPathBase<ChatParticipants> {
 
     public static final QChatParticipants chatParticipants = new QChatParticipants("chatParticipants");
 
-    public final QChatRoom chatRoom;
+    public final NumberPath<Long> chatParticipantsId = createNumber("chatParticipantsId", Long.class);
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
+    public final QChatRoom chatRoom;
 
     public final QSiteUser siteUser;
 

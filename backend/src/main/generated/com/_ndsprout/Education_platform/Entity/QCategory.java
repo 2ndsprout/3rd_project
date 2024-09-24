@@ -18,26 +18,39 @@ public class QCategory extends EntityPathBase<Category> {
 
     private static final long serialVersionUID = -2039550670L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QCategory category = new QCategory("category");
 
-    public final ListPath<Category, QCategory> categoryList = this.<Category, QCategory>createList("categoryList", Category.class, QCategory.class, PathInits.DIRECT2);
-
     public final StringPath categoryName = createString("categoryName");
+
+    public final ListPath<Category, QCategory> children = this.<Category, QCategory>createList("children", Category.class, QCategory.class, PathInits.DIRECT2);
 
     public final DateTimePath<java.time.LocalDateTime> createDate = createDateTime("createDate", java.time.LocalDateTime.class);
 
     public final DateTimePath<java.time.LocalDateTime> modifyDate = createDateTime("modifyDate", java.time.LocalDateTime.class);
 
+    public final QCategory parent;
+
     public QCategory(String variable) {
-        super(Category.class, forVariable(variable));
+        this(Category.class, forVariable(variable), INITS);
     }
 
     public QCategory(Path<? extends Category> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QCategory(PathMetadata metadata) {
-        super(Category.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QCategory(PathMetadata metadata, PathInits inits) {
+        this(Category.class, metadata, inits);
+    }
+
+    public QCategory(Class<? extends Category> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.parent = inits.isInitialized("parent") ? new QCategory(forProperty("parent"), inits.get("parent")) : null;
     }
 
 }

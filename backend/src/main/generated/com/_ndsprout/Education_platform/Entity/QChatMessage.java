@@ -22,11 +22,11 @@ public class QChatMessage extends EntityPathBase<ChatMessage> {
 
     public static final QChatMessage chatMessage = new QChatMessage("chatMessage");
 
+    public final NumberPath<Long> chatMessageId = createNumber("chatMessageId", Long.class);
+
     public final QChatRoom chatRoom;
 
     public final DateTimePath<java.time.LocalDateTime> createDate = createDateTime("createDate", java.time.LocalDateTime.class);
-
-    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final StringPath message = createString("message");
 

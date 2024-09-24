@@ -20,11 +20,11 @@ public class QCartNotification extends EntityPathBase<CartNotification> {
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QCartNotification cartNotification1 = new QCartNotification("cartNotification1");
+    public static final QCartNotification cartNotification = new QCartNotification("cartNotification");
 
     public final QCart cart;
 
-    public final NumberPath<Long> cartNotification = createNumber("cartNotification", Long.class);
+    public final NumberPath<Long> cartNotificationId = createNumber("cartNotificationId", Long.class);
 
     public final QNotification notification;
 

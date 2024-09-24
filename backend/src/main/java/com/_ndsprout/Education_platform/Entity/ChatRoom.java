@@ -1,6 +1,7 @@
 package com._ndsprout.Education_platform.Entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,9 +21,15 @@ public class ChatRoom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long chatRoomId;
 
+    private String title;
 
     @CreatedDate
     private LocalDateTime crateDate;
+
+    @Builder
+    public ChatRoom (String title) {
+        this.title = title;
+    }
 }
 
 
