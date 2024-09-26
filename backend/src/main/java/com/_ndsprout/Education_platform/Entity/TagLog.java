@@ -1,39 +1,28 @@
 package com._ndsprout.Education_platform.Entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Setter
 @Getter
-@NoArgsConstructor
-//찜하기
-public class WishList {
+//검색한 태그 로그
+public class TagLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long wishListId;
+    private Long tagLogId;
+
+    private String tagKeyword;
+
+    private String username;
 
     @CreatedDate
     private LocalDateTime createDate;
-
-    @OneToOne
-    private SiteUser siteUser;
-
-    @OneToMany
-    private List<Lesson> lessonList;
-
-    @Builder
-    public WishList(SiteUser siteUser) {
-        this.siteUser = siteUser;
-    }
 }

@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
+//알람
 public class Notification {
 
     @Id

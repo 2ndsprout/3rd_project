@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Setter
 @Getter
 @NoArgsConstructor
+//장바구니알람
 public class CartNotification {
 
     @Id

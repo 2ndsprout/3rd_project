@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
+//장바구니
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

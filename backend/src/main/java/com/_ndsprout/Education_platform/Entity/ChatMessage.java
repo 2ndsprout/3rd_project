@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
+//채팅메세지
 public class ChatMessage {
 
     @Id

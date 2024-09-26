@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
+//커뮤니티(유저 소통)
 public class Community {
 
     @Id

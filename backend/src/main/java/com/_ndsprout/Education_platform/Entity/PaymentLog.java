@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
-
+//구매로그
 public class PaymentLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

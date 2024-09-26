@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
+//수강평
 public class Review {
 
     @Id

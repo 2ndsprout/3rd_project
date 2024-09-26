@@ -18,6 +18,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+//강의
 public class Lesson {
 
     @Id

@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Setter
 @Getter
 @NoArgsConstructor
+//채팅방참여자
 public class ChatParticipants {
 
     @Id

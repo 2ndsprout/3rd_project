@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
+//게시글태그
 public class ArticleTag {
 
     @Id
