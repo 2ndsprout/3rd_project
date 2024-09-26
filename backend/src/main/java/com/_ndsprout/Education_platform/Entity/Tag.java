@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+//태그
 public class Tag {
     @Id
     private String tagName;

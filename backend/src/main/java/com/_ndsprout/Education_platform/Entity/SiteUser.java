@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+//유저
 public class SiteUser {
 
     @Id
@@ -34,6 +35,8 @@ public class SiteUser {
     private String email;
 
     private String nickname;
+
+    private String introduce;
 
     @CreatedDate
     private LocalDateTime createDate;

@@ -12,17 +12,20 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+//다중파일저장
 public class MultiKey {
     @Id
     private String k;
 
-    private String v;
+    private List<String> v = new ArrayList<>();
 
     @CreatedDate
     private LocalDateTime createDate;
@@ -33,6 +36,6 @@ public class MultiKey {
     @Builder
     public MultiKey(String key,String value){
         this.k =  key;
-        this.v = value;
+        this.v.add(value);
     }
 }

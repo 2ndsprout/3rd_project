@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
+//채팅방
 public class ChatRoom {
 
     @Id

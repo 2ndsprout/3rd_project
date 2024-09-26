@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Setter
 @Getter
 @NoArgsConstructor
+//수강평알람
 public class ReviewNotification {
 
     @Id

@@ -18,6 +18,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+//카테고리(강의)
 public class Category {
 
     @Id

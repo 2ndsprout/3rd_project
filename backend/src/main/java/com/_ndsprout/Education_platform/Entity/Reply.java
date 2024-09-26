@@ -18,6 +18,7 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
+//답변
 public class Reply {
 
     @Id

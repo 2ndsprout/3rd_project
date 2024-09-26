@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+//파일저장
 public class FileSystem {
 
     @Id

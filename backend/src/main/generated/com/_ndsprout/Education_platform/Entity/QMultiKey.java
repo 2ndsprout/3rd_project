@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -25,7 +26,7 @@ public class QMultiKey extends EntityPathBase<MultiKey> {
 
     public final DateTimePath<java.time.LocalDateTime> modifyDate = createDateTime("modifyDate", java.time.LocalDateTime.class);
 
-    public final StringPath v = createString("v");
+    public final ListPath<String, StringPath> v = this.<String, StringPath>createList("v", String.class, StringPath.class, PathInits.DIRECT2);
 
     public QMultiKey(String variable) {
         super(MultiKey.class, forVariable(variable));

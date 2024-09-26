@@ -23,6 +23,8 @@ public class QSiteUser extends EntityPathBase<SiteUser> {
 
     public final StringPath email = createString("email");
 
+    public final StringPath introduce = createString("introduce");
+
     public final DateTimePath<java.time.LocalDateTime> modifyDate = createDateTime("modifyDate", java.time.LocalDateTime.class);
 
     public final StringPath nickname = createString("nickname");

@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
+//구매강의
 public class PaymentLesson {
 
     @Id
