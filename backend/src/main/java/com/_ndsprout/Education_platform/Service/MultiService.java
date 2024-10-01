@@ -20,7 +20,7 @@ public class MultiService {
     private final LessonService lessonService;
     private final LessonTagService lessonTagService;
     private final LessonUserService lessonUserService;
-    private final MultiService multiService;
+    private final MultiKeyService multiKeyService;
     private final NotificationService notificationService;
     private final PaymentLessonService paymentLessonService;
     private final PaymentLogService paymentLogService;

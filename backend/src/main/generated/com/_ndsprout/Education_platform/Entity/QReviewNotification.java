@@ -46,7 +46,7 @@ public class QReviewNotification extends EntityPathBase<ReviewNotification> {
 
     public QReviewNotification(Class<? extends ReviewNotification> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.notification = inits.isInitialized("notification") ? new QNotification(forProperty("notification")) : null;
+        this.notification = inits.isInitialized("notification") ? new QNotification(forProperty("notification"), inits.get("notification")) : null;
         this.review = inits.isInitialized("review") ? new QReview(forProperty("review"), inits.get("review")) : null;
     }
 
