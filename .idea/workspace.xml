@@ -5,32 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f60d692-f74c-4539-a3eb-ae0df5d8a752" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Enum/FileType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Enum/PaymentType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Enum/UserRole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3rd_project.erd" beforeDir="false" afterPath="$PROJECT_DIR$/3rd_project.erd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QArticleTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QArticleTag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QChatRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QFileSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QFileSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QPaymentLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QPaymentLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Config/WebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ArticleTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ArticleTag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/CartNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/CartNotification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ChatParticipants.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ChatParticipants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ChatRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/FileSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/FileSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Lesson.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Lesson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/LessonTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/LessonTag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/PaymentLesson.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/PaymentLesson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/PaymentLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/PaymentLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Reply.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Reply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ReviewNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/ReviewNotification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QCartNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QCartNotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QReviewNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QReviewNotification.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,16 +64,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.EducationPlatformApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.backend [:EducationPlatformApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;sun&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.EducationPlatformApplication.executor": "Run",
+    "Gradle.backend [:EducationPlatformApplication.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "hse",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "editor.preferences.import"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\2ndsprout\Desktop\DevTool\work\3rd_project\backend\src\main\resources" />

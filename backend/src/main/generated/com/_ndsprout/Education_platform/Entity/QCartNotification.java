@@ -47,7 +47,7 @@ public class QCartNotification extends EntityPathBase<CartNotification> {
     public QCartNotification(Class<? extends CartNotification> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.cart = inits.isInitialized("cart") ? new QCart(forProperty("cart"), inits.get("cart")) : null;
-        this.notification = inits.isInitialized("notification") ? new QNotification(forProperty("notification")) : null;
+        this.notification = inits.isInitialized("notification") ? new QNotification(forProperty("notification"), inits.get("notification")) : null;
     }
 
 }
