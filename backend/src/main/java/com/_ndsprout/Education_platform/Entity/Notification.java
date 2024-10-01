@@ -31,6 +31,9 @@ public class Notification {
 
     private String message;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private SiteUser siteUser;
+
     @Builder
     public Notification(String message){
         this.message = message;
