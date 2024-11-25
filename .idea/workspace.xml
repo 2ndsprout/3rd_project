@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f60d692-f74c-4539-a3eb-ae0df5d8a752" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Security/CustomUserDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Security/DataInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Security/Jwt/JwtTokenFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Security/Jwt/JwtTokenProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Security/UserSecurityService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QCartNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QCartNotification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QReviewNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QReviewNotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QSiteUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QSiteUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/SiteUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/SiteUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Enum/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Enum/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Repository/SiteUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Repository/SiteUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Service/MultiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Service/MultiService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +55,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -70,7 +80,8 @@
     "Gradle.backend [:EducationPlatformApplication.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "hse",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "sun",
     "kotlin-language-version-configured": "true",
     "settings.editor.selected.configurable": "editor.preferences.import"
   }

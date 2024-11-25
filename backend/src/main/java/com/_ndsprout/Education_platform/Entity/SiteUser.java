@@ -1,5 +1,6 @@
 package com._ndsprout.Education_platform.Entity;
 
+import com._ndsprout.Education_platform.Enum.UserRole;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -48,14 +49,18 @@ public class SiteUser {
 
     private Integer point;
 
+    private UserRole userRole;
+
 @Builder
-    public SiteUser(String username,String password,String email, String nickname,String phoneNumber,Integer point){
+    public SiteUser(String username,String password,String email, String nickname,String phoneNumber,Integer point, UserRole userRole){
     this.username = username;
     this.password = password;
     this.email = email;
     this.nickname = nickname;
     this.phoneNumber = phoneNumber;
     this.point = point;
+    this.userRole = userRole;
+
 }
 
 }
