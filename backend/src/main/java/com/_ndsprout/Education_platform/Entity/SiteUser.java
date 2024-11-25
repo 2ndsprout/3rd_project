@@ -25,16 +25,20 @@ import java.time.LocalDateTime;
 public class SiteUser {
 
     @Id
+    @Column(length = 24, unique = true)
     private String username;
 
     @Column(columnDefinition = "TEXT")
     private String password;
 
     @Email
+    @Column(length = 100, unique = true)
     private String email;
 
+    @Column(length = 15, unique = true)
     private String nickname;
 
+    @Column(columnDefinition = "TEXT")
     private String introduce;
 
     @CreatedDate
