@@ -5,4 +5,6 @@ import com._ndsprout.Education_platform.Repository.Custom.SiteUserRepositoryCust
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SiteUserRepository extends JpaRepository<SiteUser ,String>, SiteUserRepositoryCustom {
+
+    void deleteUsername (String username);
 }

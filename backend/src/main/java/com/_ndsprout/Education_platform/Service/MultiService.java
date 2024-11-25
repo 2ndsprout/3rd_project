@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MultiService {
+
     private final ArticleService articleService;
     private final ArticleTagService articleTagService;
     private final CartNotificationService cartNotificationService;

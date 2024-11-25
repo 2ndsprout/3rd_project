@@ -37,6 +37,8 @@ public class QSiteUser extends EntityPathBase<SiteUser> {
 
     public final StringPath username = createString("username");
 
+    public final EnumPath<com._ndsprout.Education_platform.Enum.UserRole> userRole = createEnum("userRole", com._ndsprout.Education_platform.Enum.UserRole.class);
+
     public QSiteUser(String variable) {
         super(SiteUser.class, forVariable(variable));
     }
