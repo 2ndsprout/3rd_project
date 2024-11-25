@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,8 +27,7 @@ public class SiteUser {
     @Id
     private String username;
 
-    @Column
-    @Size(min = 8, max = 11)
+    @Column(columnDefinition = "TEXT")
     private String password;
 
     @Email

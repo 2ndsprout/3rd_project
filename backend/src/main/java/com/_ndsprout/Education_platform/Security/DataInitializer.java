@@ -22,7 +22,7 @@ public class DataInitializer implements CommandLineRunner {
                     .username("admin")
                     .email("admin@honeydanji.co.kr")
                     .userRole(UserRole.ADMIN)
-                    .password(passwordEncoder.encode("123"))
+                    .password(passwordEncoder.encode("123456789"))
                     .build();
             this.siteUserRepository.save(admin);
             System.out.println("Admin account created");
