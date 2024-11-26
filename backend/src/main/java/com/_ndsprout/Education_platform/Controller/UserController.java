@@ -22,7 +22,7 @@ public class UserController {
     @PostMapping("/SingUp")
     public ResponseEntity<?> createUser (@RequestBody UserSignUpRequestDTO userSignUpRequestDTO){
         try {
-            multiService.signUp(userSignUpRequestDTO);
+            multiService.signup(userSignUpRequestDTO);
             return ResponseEntity.status(HttpStatus.OK).body("OK");
         }catch (DataDuplicateException ex){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("FAIL");
