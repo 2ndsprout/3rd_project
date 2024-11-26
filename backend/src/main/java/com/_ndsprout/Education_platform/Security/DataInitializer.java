@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 @RequiredArgsConstructor
 public class DataInitializer implements CommandLineRunner {
@@ -16,8 +18,8 @@ public class DataInitializer implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
 
     public void run(String... args) throws Exception {
-        SiteUser _admin = siteUserRepository.findByUsername("admin");
-        if (_admin == null) {
+        Optional<SiteUser> _admin = siteUserRepository.findByUsername("admin");
+        if (_admin.isEmpty()) {
             SiteUser admin = SiteUser.builder()
                     .username("admin")
                     .email("admin@honeydanji.co.kr")

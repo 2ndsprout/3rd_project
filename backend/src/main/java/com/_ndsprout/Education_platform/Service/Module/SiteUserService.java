@@ -1,10 +1,10 @@
 package com._ndsprout.Education_platform.Service.Module;
 
-import com._ndsprout.Education_platform.Entity.SiteUser;
 import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
+import com._ndsprout.Education_platform.Entity.SiteUser;
 import com._ndsprout.Education_platform.Enum.UserRole;
 import com._ndsprout.Education_platform.Exceptions.BadRequest;
-import com._ndsprout.Education_platform.Exception.DataDuplicateException;
+import com._ndsprout.Education_platform.Exceptions.DataDuplicateException;
 import com._ndsprout.Education_platform.Repository.SiteUserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class SiteUserService {
     private final SiteUserRepository siteUserRepository;
-
 
     @Transactional
     public SiteUser get(String value){

@@ -2,6 +2,7 @@ package com._ndsprout.Education_platform.Service;
 
 
 import com._ndsprout.Education_platform.DTO.CategoryResponseDTO;
+import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
 import com._ndsprout.Education_platform.Entity.Category;
 import com._ndsprout.Education_platform.Entity.SiteUser;
 import com._ndsprout.Education_platform.Enum.UserRole;
@@ -9,14 +10,17 @@ import com._ndsprout.Education_platform.Exceptions.DataNotFoundException;
 import com._ndsprout.Education_platform.Records.TokenRecord;
 import com._ndsprout.Education_platform.Security.CustomUserDetails;
 import com._ndsprout.Education_platform.Security.Jwt.JwtTokenProvider;
-import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
 import com._ndsprout.Education_platform.Service.Module.*;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -50,7 +54,6 @@ public class MultiService {
     private final WatchLogService watchLogService;
     private final WishListService wishListService;
     private final JwtTokenProvider jwtTokenProvider;
-
 
 
     /**
@@ -93,8 +96,28 @@ public class MultiService {
     @Transactional
     public CategoryResponseDTO saveCategory(String username, String parentName, String name) {
         SiteUser user = this.userCheck(username);
+        Category prentCategory = null;
         if (user.getUserRole() != UserRole.ADMIN) throw new IllegalArgumentException("어드민 권한 아님");
-        Category category = categoryService.findByCategoryName(parentName);
+        if (parentName != null) {
+            prentCategory = categoryService.findByCategoryName(parentName);
+        }
+        Category category = categoryService.save(prentCategory, name);
+        return this.categoryResponseDTO(category);
+    }
+
+    public CategoryResponseDTO categoryResponseDTO(Category category) {
+        List<String> childrenNameList = new ArrayList<>();
+        if (category.getChildren() != null)
+            for (Category childrenCategory : category.getChildren()) {
+                childrenNameList.add(childrenCategory.getCategoryName());
+            }
+        return CategoryResponseDTO.builder()//
+                .name(category.getCategoryName()) //
+                .prentCategory(category.getParent().getCategoryName()) //
+                .childrenName(childrenNameList) //
+                .createDate(this.dateTimeTransfer(category.getCreateDate())) //
+                .modifyDate(this.dateTimeTransfer(category.getModifyDate())) //
+                .build();
     }
 
     /**
@@ -105,6 +128,17 @@ public class MultiService {
         SiteUser user = siteUserService.get(userName);
         if (user == null) throw new DataNotFoundException("유저 객체 없음");
         return user;
+    }
+
+    /**
+     *
+     */
+    private Long dateTimeTransfer(LocalDateTime dateTime) {
+
+        if (dateTime == null) {
+            return null;
+        }
+        return dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 
 
