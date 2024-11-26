@@ -36,4 +36,11 @@ public class MultiService {
     private final WatchLogService watchLogService;
     private final WishListService wishListService;
 
+
+    //유저관련
+
+    //회원가입
+//    public Boolean signup(UserSignUpRequestDTO userSignUpRequestDTO) {
+//
+//    }
 }
