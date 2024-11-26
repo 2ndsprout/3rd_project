@@ -9,4 +9,6 @@ import org.springframework.stereotype.Service;
 public class SiteUserService {
     private final SiteUserRepository siteUserRepository;
 
+//    public Boolean Signup()
+
 }
