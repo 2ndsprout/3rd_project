@@ -13,9 +13,8 @@ public class SiteUserRepositoryCustomImpl implements SiteUserRepositoryCustom {
     private final JPAQueryFactory jpaQueryFactory;
     QSiteUser qSiteUser = QSiteUser.siteUser;
 
-    public Optional<SiteUser> findByUsername(String username){
-
+    public Optional<SiteUser> findByUsername(String username) {
         return Optional.ofNullable(jpaQueryFactory.selectFrom(qSiteUser).where(qSiteUser.username.eq(username)).fetchOne());
-
     }
+
 }
