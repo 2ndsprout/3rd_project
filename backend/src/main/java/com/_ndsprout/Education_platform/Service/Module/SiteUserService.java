@@ -20,11 +20,30 @@ public class SiteUserService {
         Optional<SiteUser> _SiteUser = siteUserRepository.findByUsername(userSignUpRequestDTO.username());
         if (_SiteUser.isPresent())
             throw new DataDuplicateException("중복된 유저네임");
-        if(userSignUpRequestDTO.role() == 1) {
-            siteUserRepository.save(new SiteUser(userSignUpRequestDTO.username(), userSignUpRequestDTO.password(), userSignUpRequestDTO.email(), userSignUpRequestDTO.nickname(), userSignUpRequestDTO.phoneNumber(), 0, UserRole.USER));
-        }else if(userSignUpRequestDTO.role() == 2){
-            siteUserRepository.save(new SiteUser(userSignUpRequestDTO.username(), userSignUpRequestDTO.password(), userSignUpRequestDTO.email(), userSignUpRequestDTO.nickname(), userSignUpRequestDTO.phoneNumber(), 0, UserRole.TEACHER));
-        }else{
+        if (userSignUpRequestDTO.role() == 1) {
+            siteUserRepository.save(SiteUser.builder() //
+                    .username(userSignUpRequestDTO.username()) //
+                    .password(userSignUpRequestDTO.password()) //
+                    .email(userSignUpRequestDTO.email()) //
+                    .nickname(userSignUpRequestDTO.nickname()) //
+                    .phoneNumber(userSignUpRequestDTO.phoneNumber()) //
+                    .point(0) //
+                    .userRole(UserRole.USER) //
+                    .build()//
+
+            );
+        } else if (userSignUpRequestDTO.role() == 2) {
+            siteUserRepository.save(SiteUser.builder() //
+                    .username(userSignUpRequestDTO.username()) //
+                    .password(userSignUpRequestDTO.password()) //
+                    .email(userSignUpRequestDTO.email()) //
+                    .nickname(userSignUpRequestDTO.nickname()) //
+                    .phoneNumber(userSignUpRequestDTO.phoneNumber()) //
+                    .point(0) //
+                    .userRole(UserRole.TEACHER) //
+                    .build() //
+            );
+        } else {
             throw new BadRequest("잘못된 권한입니다");
         }
     }
