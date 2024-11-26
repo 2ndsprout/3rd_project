@@ -20,11 +20,11 @@ public class CategoryController {
     public ResponseEntity<?> saveCategory(@RequestHeader("Authorization") String accessToken,
                                           @RequestHeader("PROFILE_ID") Long profileId,
                                           @RequestBody CategoryRequestDTO requestDTO) {
-        TokenRecord tokenRecord = this.multiService.checkToken(accessToken, profileId);
+        TokenRecord tokenRecord = this.multiService.checkToken(accessToken);
         try {
             if (tokenRecord.isOK()) {
                 String username = tokenRecord.username();
-                CategoryResponseDTO responseDTO = multiService.saveCategory(username,requestDTO.parentId(), requestDTO.name(), profileId);
+                CategoryResponseDTO responseDTO = multiService.saveCategory(username, requestDTO.parentName(), requestDTO.name());
                 return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
             }
         } catch (DataNotFoundException | IllegalArgumentException ex) {

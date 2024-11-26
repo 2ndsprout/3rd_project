@@ -1,11 +1,15 @@
 package com._ndsprout.Education_platform.Service;
 
+
 import com._ndsprout.Education_platform.DTO.CategoryResponseDTO;
+import com._ndsprout.Education_platform.Entity.Category;
 import com._ndsprout.Education_platform.Entity.SiteUser;
+import com._ndsprout.Education_platform.Enum.UserRole;
 import com._ndsprout.Education_platform.Exceptions.DataNotFoundException;
 import com._ndsprout.Education_platform.Records.TokenRecord;
 import com._ndsprout.Education_platform.Security.CustomUserDetails;
 import com._ndsprout.Education_platform.Security.Jwt.JwtTokenProvider;
+import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
 import com._ndsprout.Education_platform.Service.Module.*;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -70,12 +74,6 @@ public class MultiService {
         return TokenRecord.builder().httpStatus(httpStatus).username(username).body(body).build();
     }
 
-    public TokenRecord checkToken(String accessToken, Long profile_id) {
-        if (profile_id == null)
-            return TokenRecord.builder().httpStatus(HttpStatus.UNAUTHORIZED).body("unknown profile").build();
-        return checkToken(accessToken);
-    }
-
     @Transactional
     public String refreshToken(String refreshToken) {
         if (this.jwtTokenProvider.validateToken(refreshToken)) {
@@ -93,9 +91,10 @@ public class MultiService {
      */
 
     @Transactional
-    public CategoryResponseDTO saveCategory(String username, Long aLong, String name, Long profileId) {
+    public CategoryResponseDTO saveCategory(String username, String parentName, String name) {
         SiteUser user = this.userCheck(username);
-        // 로그인 기능 완성되는대로 카테고리 생성에 유저 권한 인증해야함
+        if (user.getUserRole() != UserRole.ADMIN) throw new IllegalArgumentException("어드민 권한 아님");
+        Category category = categoryService.findByCategoryName(parentName);
     }
 
     /**
@@ -112,7 +111,9 @@ public class MultiService {
     //유저관련
 
     //회원가입
-//    public Boolean signup(UserSignUpRequestDTO userSignUpRequestDTO) {
-//
-//    }
+
+    @Transactional
+    public void signUp(UserSignUpRequestDTO userSignUpRequestDTO) {
+        siteUserService.signUp(userSignUpRequestDTO);
+    }
 }
