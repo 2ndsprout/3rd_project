@@ -16,7 +16,6 @@ import java.util.Optional;
 public class SiteUserService {
     private final SiteUserRepository siteUserRepository;
 
-
     public void UserSignup(UserSignUpRequestDTO userSignUpRequestDTO) {
         Optional<SiteUser> _SiteUser = siteUserRepository.findByUsername(userSignUpRequestDTO.username());
         if (_SiteUser.isPresent())
