@@ -1,5 +1,6 @@
 package com._ndsprout.Education_platform.Service;
 
+import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
 import com._ndsprout.Education_platform.Service.Module.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,8 @@ public class MultiService {
     //유저관련
 
     //회원가입
-//    public Boolean signup(UserSignUpRequestDTO userSignUpRequestDTO) {
-//
-//    }
+
+    public void signup(UserSignUpRequestDTO userSignUpRequestDTO) {
+        siteUserService.UserSignup(userSignUpRequestDTO);
+    }
 }
