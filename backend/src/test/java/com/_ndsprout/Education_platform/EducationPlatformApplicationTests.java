@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
+
 @SpringBootTest
 class EducationPlatformApplicationTests {
 
@@ -19,9 +21,14 @@ class EducationPlatformApplicationTests {
 
 	@Test
 	void modifty(){
-		SiteUser siteUser = siteUserRepository.findByUsername("admin1");
-		siteUser.setPoint(100);
-		siteUserRepository.save(siteUser);
+		Optional<SiteUser> _siteUser = siteUserRepository.findByUsername("admin1");
+		if(!_siteUser.isEmpty()){
+			SiteUser siteUser = _siteUser.get();
+			siteUser.setPoint(100);
+			siteUserRepository.save(siteUser);
+
+		}
+
 	}
 
 }
