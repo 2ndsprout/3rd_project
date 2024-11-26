@@ -41,7 +41,8 @@ public class MultiService {
     //유저관련
 
     //회원가입
-    public void userSignup(UserSignUpRequestDTO userSignUpRequestDTO) {
+
+    public void signup(UserSignUpRequestDTO userSignUpRequestDTO) {
         siteUserService.UserSignup(userSignUpRequestDTO);
     }
 }
