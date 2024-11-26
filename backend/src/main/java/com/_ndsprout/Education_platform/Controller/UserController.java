@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,7 +21,7 @@ public class UserController {
     @PostMapping("/SingUp")
     public ResponseEntity<?> createUser (@RequestBody UserSignUpRequestDTO userSignUpRequestDTO){
         try {
-            multiService.signup(userSignUpRequestDTO);
+            multiService.signUp(userSignUpRequestDTO);
             return ResponseEntity.status(HttpStatus.OK).body("OK");
         }catch (DataDuplicateException ex){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("FAIL");
