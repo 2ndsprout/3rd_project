@@ -1,9 +1,26 @@
 package com._ndsprout.Education_platform.Service;
 
+
+import com._ndsprout.Education_platform.DTO.CategoryResponseDTO;
 import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
+import com._ndsprout.Education_platform.Entity.Category;
+import com._ndsprout.Education_platform.Entity.SiteUser;
+import com._ndsprout.Education_platform.Enum.UserRole;
+import com._ndsprout.Education_platform.Exceptions.DataNotFoundException;
+import com._ndsprout.Education_platform.Records.TokenRecord;
+import com._ndsprout.Education_platform.Security.CustomUserDetails;
+import com._ndsprout.Education_platform.Security.Jwt.JwtTokenProvider;
 import com._ndsprout.Education_platform.Service.Module.*;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -36,13 +53,101 @@ public class MultiService {
     private final TagService tagService;
     private final WatchLogService watchLogService;
     private final WishListService wishListService;
+    private final JwtTokenProvider jwtTokenProvider;
+
+
+    /**
+     * 토큰
+     */
+    public TokenRecord checkToken(String accessToken) {
+        HttpStatus httpStatus = HttpStatus.FORBIDDEN;
+        String username = null;
+        String body = "logout";
+        if (accessToken != null && accessToken.length() > 7) {
+            String token = accessToken.substring(7);
+            if (this.jwtTokenProvider.validateToken(token)) {
+                httpStatus = HttpStatus.OK;
+                username = this.jwtTokenProvider.getUsernameFromToken(token);
+                body = "okay";
+            } else {
+                httpStatus = HttpStatus.UNAUTHORIZED;
+                body = "refresh";
+            }
+        }
+        return TokenRecord.builder().httpStatus(httpStatus).username(username).body(body).build();
+    }
+
+    @Transactional
+    public String refreshToken(String refreshToken) {
+        if (this.jwtTokenProvider.validateToken(refreshToken)) {
+            String username = jwtTokenProvider.getUsernameFromToken(refreshToken);
+            SiteUser user = siteUserService.get(username);
+            if (user != null) {
+                return this.jwtTokenProvider.generateAccessToken(new UsernamePasswordAuthenticationToken(new CustomUserDetails(user), user.getPassword()));
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 카테고리
+     */
+
+    @Transactional
+    public CategoryResponseDTO saveCategory(String username, String parentName, String name) {
+        SiteUser user = this.userCheck(username);
+        Category prentCategory = null;
+        if (user.getUserRole() != UserRole.ADMIN) throw new IllegalArgumentException("어드민 권한 아님");
+        if (parentName != null) {
+            prentCategory = categoryService.findByCategoryName(parentName);
+        }
+        Category category = categoryService.save(prentCategory, name);
+        return this.categoryResponseDTO(category);
+    }
+
+    public CategoryResponseDTO categoryResponseDTO(Category category) {
+        List<String> childrenNameList = new ArrayList<>();
+        if (category.getChildren() != null)
+            for (Category childrenCategory : category.getChildren()) {
+                childrenNameList.add(childrenCategory.getCategoryName());
+            }
+        return CategoryResponseDTO.builder()//
+                .name(category.getCategoryName()) //
+                .prentCategory(category.getParent().getCategoryName()) //
+                .childrenName(childrenNameList) //
+                .createDate(this.dateTimeTransfer(category.getCreateDate())) //
+                .modifyDate(this.dateTimeTransfer(category.getModifyDate())) //
+                .build();
+    }
+
+    /**
+     * 유저 체크
+     */
+    @Transactional
+    private SiteUser userCheck(String userName) {
+        SiteUser user = siteUserService.get(userName);
+        if (user == null) throw new DataNotFoundException("유저 객체 없음");
+        return user;
+    }
+
+    /**
+     *
+     */
+    private Long dateTimeTransfer(LocalDateTime dateTime) {
+
+        if (dateTime == null) {
+            return null;
+        }
+        return dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+    }
 
 
     //유저관련
 
     //회원가입
 
-    public void signup(UserSignUpRequestDTO userSignUpRequestDTO) {
-        siteUserService.UserSignup(userSignUpRequestDTO);
+    @Transactional
+    public void signUp(UserSignUpRequestDTO userSignUpRequestDTO) {
+        siteUserService.signUp(userSignUpRequestDTO);
     }
 }
