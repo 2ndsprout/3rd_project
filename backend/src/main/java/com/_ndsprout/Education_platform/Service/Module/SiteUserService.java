@@ -44,7 +44,7 @@ public class SiteUserService {
         } else if (userSignUpRequestDTO.role() == 2) {
             siteUserRepository.save(SiteUser.builder() //
                     .username(userSignUpRequestDTO.username()) //
-                    .password(userSignUpRequestDTO.password()) //
+                    .password(passwordEncoder.encode(userSignUpRequestDTO.password())) //
                     .email(userSignUpRequestDTO.email()) //
                     .nickname(userSignUpRequestDTO.nickname()) //
                     .phoneNumber(userSignUpRequestDTO.phoneNumber()) //
