@@ -1,6 +1,8 @@
 package com._ndsprout.Education_platform.Service;
 
 
+import com._ndsprout.Education_platform.DTO.AuthRequestDTO;
+import com._ndsprout.Education_platform.DTO.AuthResponseDTO;
 import com._ndsprout.Education_platform.DTO.CategoryResponseDTO;
 import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
 import com._ndsprout.Education_platform.Entity.Category;
@@ -162,5 +164,18 @@ public class MultiService {
         siteUserService.signUp(userSignUpRequestDTO);
     }
 
+    public AuthResponseDTO login(AuthRequestDTO authRequestDTO) {
+        SiteUser siteUser = siteUserService.get(authRequestDTO.username());
+        if(siteUser == null)
+            throw  new IllegalArgumentException("username");
 
+        if(!siteUserService.isMatch(siteUser.getPassword(), authRequestDTO.password()))
+            throw new IllegalArgumentException("password");
+
+        //추후 유저 계정 잠금 기능 만들어지면 계정 활성화 여부 체크하는 로직 추가할것
+
+        String accessToken = this.jwtTokenProvider.generateAccessToken(new UsernamePasswordAuthenticationToken(new CustomUserDetails(siteUser),siteUser.getPassword()));
+        String refreshToken = this.jwtTokenProvider.generateRefreshToken(new UsernamePasswordAuthenticationToken(new CustomUserDetails(siteUser),siteUser.getPassword()));
+        return AuthResponseDTO.builder().tokenType("Bearer").accessToken(accessToken).refreshToken(refreshToken).build();
+    }
 }

@@ -8,6 +8,7 @@ import com._ndsprout.Education_platform.Exceptions.DataDuplicateException;
 import com._ndsprout.Education_platform.Repository.SiteUserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,6 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class SiteUserService {
     private final SiteUserRepository siteUserRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public SiteUser get(String value){
@@ -55,6 +57,11 @@ public class SiteUserService {
             throw new BadRequest("잘못된 권한입니다");
         }
     }
+
+    public Boolean isMatch(String password1, String password2){
+        return passwordEncoder.matches(password1,password1);
+    }
+
 
 
 }
