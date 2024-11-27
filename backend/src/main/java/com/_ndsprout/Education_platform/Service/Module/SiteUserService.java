@@ -33,14 +33,13 @@ public class SiteUserService {
         if (userSignUpRequestDTO.role() == 1) {
             siteUserRepository.save(SiteUser.builder() //
                     .username(userSignUpRequestDTO.username()) //
-                    .password(userSignUpRequestDTO.password()) //
+                    .password(passwordEncoder.encode(userSignUpRequestDTO.password())) //
                     .email(userSignUpRequestDTO.email()) //
                     .nickname(userSignUpRequestDTO.nickname()) //
                     .phoneNumber(userSignUpRequestDTO.phoneNumber()) //
                     .point(0) //
                     .userRole(UserRole.USER) //
                     .build()//
-
             );
         } else if (userSignUpRequestDTO.role() == 2) {
             siteUserRepository.save(SiteUser.builder() //
