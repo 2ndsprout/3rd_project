@@ -159,6 +159,7 @@ public class MultiService {
             throw  new IllegalArgumentException("username");
 
         if(!this.siteUserService.isMatch(authRequestDTO.password(), siteUser.getPassword()))
+
             throw new IllegalArgumentException("password");
 
         //추후 유저 계정 잠금 기능 만들어지면 계정 활성화 여부 체크하는 로직 추가할것

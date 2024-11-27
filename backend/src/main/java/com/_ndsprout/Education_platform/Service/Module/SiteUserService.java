@@ -40,7 +40,6 @@ public class SiteUserService {
                     .point(0) //
                     .userRole(UserRole.USER) //
                     .build()//
-
             );
         } else if (userSignUpRequestDTO.role() == 2) {
             siteUserRepository.save(SiteUser.builder() //
