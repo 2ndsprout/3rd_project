@@ -112,7 +112,7 @@ public class MultiService {
         SiteUser user = this.userCheck(username);
         if (user.getUserRole() != UserRole.ADMIN) throw new IllegalArgumentException("어드민 권한 아님");
         Category category = categoryService.findByCategoryName(categoryName);
-        if (category == null) throw new DataNotFoundException("존재하는 카테고리 없음");
+        if (category == null) throw new DataNotFoundException("존재하는 카테고리 객체 없음");
         return this.categoryResponseDTO(category);
     }
 
@@ -164,6 +164,7 @@ public class MultiService {
         siteUserService.signUp(userSignUpRequestDTO);
     }
 
+    @Transactional
     public AuthResponseDTO login(AuthRequestDTO authRequestDTO) {
         SiteUser siteUser = siteUserService.get(authRequestDTO.username());
         if(siteUser == null)
