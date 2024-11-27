@@ -18,7 +18,6 @@ public class CategoryController {
 
     @PostMapping
     public ResponseEntity<?> saveCategory(@RequestHeader("Authorization") String accessToken,
-                                          @RequestHeader("PROFILE_ID") Long profileId,
                                           @RequestBody CategoryRequestDTO requestDTO) {
         TokenRecord tokenRecord = this.multiService.checkToken(accessToken);
         try {
@@ -28,6 +27,22 @@ public class CategoryController {
                 return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
             }
         } catch (DataNotFoundException | IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
+        return tokenRecord.getResponseEntity();
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getCategory(@RequestHeader("Authorization") String accessToken,
+                                         @RequestHeader("CategoryName") String categoryName) {
+        TokenRecord tokenRecord = this.multiService.checkToken(accessToken);
+        try {
+            if (tokenRecord.isOK()) {
+                String username = tokenRecord.username();
+                CategoryResponseDTO categoryResponseDTO = multiService.getCategory(categoryName, username);
+                return ResponseEntity.status(HttpStatus.OK).body(categoryResponseDTO);
+            }
+        } catch (DataNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
         return tokenRecord.getResponseEntity();
