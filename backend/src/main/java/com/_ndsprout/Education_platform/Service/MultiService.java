@@ -99,35 +99,42 @@ public class MultiService {
     public CategoryResponseDTO saveCategory(String username, String parentName, String name) {
         SiteUser user = this.userCheck(username);
         if (user.getUserRole() != UserRole.ADMIN) throw new IllegalArgumentException("어드민 권한 아님");
-        Category prentCategory = null;
-        if (parentName != null) {
-            prentCategory = categoryService.findByCategoryName(parentName);
-        }
-        Category category = categoryService.save(prentCategory, name);
+        Category parentCategory = categoryService.findByCategoryName(parentName);
+        if (parentCategory == null) throw new DataNotFoundException("부모 객체 없음");
+        Category category = categoryService.save(parentCategory, name);
         return this.categoryResponseDTO(category);
     }
 
     @Transactional
     public CategoryResponseDTO getCategory(String categoryName, String username) {
-        SiteUser user = this.userCheck(username);
-        if (user.getUserRole() != UserRole.ADMIN) throw new IllegalArgumentException("어드민 권한 아님");
         Category category = categoryService.findByCategoryName(categoryName);
-        if (category == null) throw new DataNotFoundException("존재하는 카테고리 객체 없음");
         return this.categoryResponseDTO(category);
+    }
+
+    // 만약 상위 객체를 뽑아오고 싶을때 EX) : 강의 부모의 자식들
+    @Transactional
+    public List<CategoryResponseDTO> getParentCategory(String categoryName, String username) {
+        Category parentCategory = categoryService.findByCategoryName(categoryName);
+        List<Category> categoryList = categoryService.findByParentCategoryList(parentCategory);
+        List<CategoryResponseDTO> categoryResponseDTOList = new ArrayList<>();
+        for (Category category : categoryList){
+            categoryResponseDTOList.add(this.categoryResponseDTO(category));
+        }
+        return categoryResponseDTOList;
     }
 
 
 
     private CategoryResponseDTO categoryResponseDTO(Category category) {
-        List<String> childrenNameList = new ArrayList<>();
+        List<CategoryResponseDTO> childrenList = new ArrayList<>();
         if (category.getChildren() != null)
             for (Category childrenCategory : category.getChildren()) {
-                childrenNameList.add(childrenCategory.getName());
+                childrenList.add(this.categoryResponseDTO(childrenCategory));
             }
         return CategoryResponseDTO.builder()//
                 .name(category.getName()) //
                 .prentCategory(category.getParent().getName()) //
-                .childrenName(childrenNameList) //
+                .childrenResponseDTO(childrenList) //
                 .createDate(this.dateTimeTransfer(category.getCreateDate())) //
                 .modifyDate(this.dateTimeTransfer(category.getModifyDate())) //
                 .build();
