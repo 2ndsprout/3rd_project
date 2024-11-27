@@ -153,6 +153,7 @@ public class MultiService {
         siteUserService.signUp(userSignUpRequestDTO);
     }
 
+    //로그인
     public AuthResponseDTO login(AuthRequestDTO authRequestDTO) {
         SiteUser siteUser = siteUserService.get(authRequestDTO.username());
         if(siteUser == null)
