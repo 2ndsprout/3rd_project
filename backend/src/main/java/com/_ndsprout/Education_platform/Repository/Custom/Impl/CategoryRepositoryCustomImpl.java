@@ -14,7 +14,6 @@ public class CategoryRepositoryCustomImpl implements CategoryRepositoryCustom {
     QCategory qCategory = QCategory.category;
 
     public Optional<Category> findByCategoryName(String categoryName){
-        return Optional.ofNullable(jpaQueryFactory.selectFrom(qCategory).where(qCategory.categoryName.eq(categoryName)).fetchOne());
+        return Optional.ofNullable(jpaQueryFactory.selectFrom(qCategory).where(qCategory.name.eq(categoryName)).fetchOne());
     }
-
 }

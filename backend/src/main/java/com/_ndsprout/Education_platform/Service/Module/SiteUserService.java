@@ -60,7 +60,4 @@ public class SiteUserService {
     public Boolean isMatch(String password1, String password2){
         return passwordEncoder.matches(password1,password2);
     }
-
-
-
 }

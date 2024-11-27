@@ -21,9 +21,8 @@ public class CategoryService {
 
     public Category save(Category prentCategory, String name) {
         return categoryRepository.save(Category.builder() //
-                .categoryName(name) //
+                .name(name) //
                 .parent(prentCategory) //
-
                 .build());
     }
 }
