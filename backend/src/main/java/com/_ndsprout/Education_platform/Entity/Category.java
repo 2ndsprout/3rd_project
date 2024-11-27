@@ -22,7 +22,7 @@ import java.util.List;
 public class Category {
 
     @Id
-    private String categoryName;
+    private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Category parent;
@@ -36,8 +36,9 @@ public class Category {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    @Builder Category(String categoryName, Category parent){
-        this.categoryName = categoryName;
+    @Builder
+    public Category(String name, Category parent){
+        this.name = name;
         this.parent = parent;
     }
 

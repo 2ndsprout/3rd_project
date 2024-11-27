@@ -33,13 +33,4 @@ public class UserController {
         }
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody AuthRequestDTO authRequestDTO) {
-        try {
-            AuthResponseDTO authResponseDTO = multiService.login(authRequestDTO);
-            return ResponseEntity.status(HttpStatus.OK).body(authResponseDTO);
-        } catch (IllegalArgumentException ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-        }
-    }
 }

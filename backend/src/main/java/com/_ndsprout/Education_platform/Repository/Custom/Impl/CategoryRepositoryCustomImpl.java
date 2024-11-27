@@ -6,6 +6,7 @@ import com._ndsprout.Education_platform.Repository.Custom.CategoryRepositoryCust
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -14,7 +15,10 @@ public class CategoryRepositoryCustomImpl implements CategoryRepositoryCustom {
     QCategory qCategory = QCategory.category;
 
     public Optional<Category> findByCategoryName(String categoryName){
-        return Optional.ofNullable(jpaQueryFactory.selectFrom(qCategory).where(qCategory.categoryName.eq(categoryName)).fetchOne());
+        return Optional.ofNullable(jpaQueryFactory.selectFrom(qCategory).where(qCategory.name.eq(categoryName)).fetchOne());
     }
 
+    public List<Category> findByParentCategory(Category parentCategory){
+        return jpaQueryFactory.selectFrom(qCategory).where(qCategory.parent.eq(parentCategory)).fetch();
+    }
 }

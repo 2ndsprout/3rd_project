@@ -54,7 +54,7 @@ public class JwtTokenProvider {
                 .setSigningKey(jwtSecretKey)
                 .parseClaimsJws(token)
                 .getBody()
-                .get("user-email", String.class);
+                .get("user-phone", String.class);
     }
 
     public String getUsernameFromToken(String token) {
@@ -63,6 +63,14 @@ public class JwtTokenProvider {
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
+    }
+
+    public String getUserEmailFromToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(jwtSecretKey)
+                .parseClaimsJws(token)
+                .getBody()
+                .get("user-email", String.class);
     }
 
     public Date getExpirationFromToken(String token) {
