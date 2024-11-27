@@ -1,5 +1,7 @@
 package com._ndsprout.Education_platform.Controller;
 
+import com._ndsprout.Education_platform.DTO.AuthRequestDTO;
+import com._ndsprout.Education_platform.DTO.AuthResponseDTO;
 import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
 import com._ndsprout.Education_platform.Exceptions.BadRequest;
 import com._ndsprout.Education_platform.Exceptions.DataDuplicateException;
@@ -27,6 +29,16 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("FAIL");
         } catch (BadRequest ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ROLE ERROR");
+        }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody AuthRequestDTO authRequestDTO) {
+        try {
+            AuthResponseDTO authResponseDTO = multiService.login(authRequestDTO);
+            return ResponseEntity.status(HttpStatus.OK).body(authResponseDTO);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
         }
     }
 }
