@@ -1,4 +1,4 @@
-package com._ndsprout.Education_platform.DTO;
+package com._ndsprout.Education_platform.Dto;
 
 
 import lombok.Builder;

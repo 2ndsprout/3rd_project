@@ -44,7 +44,7 @@ public class SiteUserService {
         } else if (userSignUpRequestDTO.role() == 2) {
             siteUserRepository.save(SiteUser.builder() //
                     .username(userSignUpRequestDTO.username()) //
-                    .password(userSignUpRequestDTO.password()) //
+                    .password(passwordEncoder.encode(userSignUpRequestDTO.password())) //
                     .email(userSignUpRequestDTO.email()) //
                     .nickname(userSignUpRequestDTO.nickname()) //
                     .phoneNumber(userSignUpRequestDTO.phoneNumber()) //
@@ -58,9 +58,6 @@ public class SiteUserService {
     }
 
     public Boolean isMatch(String password1, String password2){
-        return passwordEncoder.matches(password1,password1);
+        return passwordEncoder.matches(password1,password2);
     }
-
-
-
 }

@@ -111,11 +111,11 @@ public class MultiService {
         List<String> childrenNameList = new ArrayList<>();
         if (category.getChildren() != null)
             for (Category childrenCategory : category.getChildren()) {
-                childrenNameList.add(childrenCategory.getCategoryName());
+                childrenNameList.add(childrenCategory.getName());
             }
         return CategoryResponseDTO.builder()//
-                .name(category.getCategoryName()) //
-                .prentCategory(category.getParent().getCategoryName()) //
+                .name(category.getName()) //
+                .prentCategory(category.getParent().getName()) //
                 .childrenName(childrenNameList) //
                 .createDate(this.dateTimeTransfer(category.getCreateDate())) //
                 .modifyDate(this.dateTimeTransfer(category.getModifyDate())) //
