@@ -36,7 +36,8 @@ public class Category {
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
-    @Builder Category(String name, Category parent){
+    @Builder
+    public Category(String name, Category parent){
         this.name = name;
         this.parent = parent;
     }
