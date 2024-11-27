@@ -1,5 +1,7 @@
 package com._ndsprout.Education_platform.Controller;
 
+import com._ndsprout.Education_platform.DTO.AuthRequestDTO;
+import com._ndsprout.Education_platform.DTO.AuthResponseDTO;
 import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
 import com._ndsprout.Education_platform.Exceptions.BadRequest;
 import com._ndsprout.Education_platform.Exceptions.DataDuplicateException;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
