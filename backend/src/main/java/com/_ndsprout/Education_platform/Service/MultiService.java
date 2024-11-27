@@ -96,8 +96,8 @@ public class MultiService {
     @Transactional
     public CategoryResponseDTO saveCategory(String username, String parentName, String name) {
         SiteUser user = this.userCheck(username);
-        Category prentCategory = null;
         if (user.getUserRole() != UserRole.ADMIN) throw new IllegalArgumentException("어드민 권한 아님");
+        Category prentCategory = null;
         if (parentName != null) {
             prentCategory = categoryService.findByCategoryName(parentName);
         }
@@ -105,7 +105,18 @@ public class MultiService {
         return this.categoryResponseDTO(category);
     }
 
-    public CategoryResponseDTO categoryResponseDTO(Category category) {
+    @Transactional
+    public CategoryResponseDTO getCategory(String categoryName, String username) {
+        SiteUser user = this.userCheck(username);
+        if (user.getUserRole() != UserRole.ADMIN) throw new IllegalArgumentException("어드민 권한 아님");
+        Category category = categoryService.findByCategoryName(categoryName);
+        if (category == null) throw new DataNotFoundException("존재하는 카테고리 없음");
+        return this.categoryResponseDTO(category);
+    }
+
+
+
+    private CategoryResponseDTO categoryResponseDTO(Category category) {
         List<String> childrenNameList = new ArrayList<>();
         if (category.getChildren() != null)
             for (Category childrenCategory : category.getChildren()) {
@@ -150,4 +161,6 @@ public class MultiService {
     public void signUp(UserSignUpRequestDTO userSignUpRequestDTO) {
         siteUserService.signUp(userSignUpRequestDTO);
     }
+
+
 }
