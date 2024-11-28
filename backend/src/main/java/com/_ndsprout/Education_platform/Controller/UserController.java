@@ -40,11 +40,13 @@ public class UserController {
                 this.multiService.updatePassword(tokenRecord.username(),userInformationRequestDTO.nowPassword(),userInformationRequestDTO.password());
                 return ResponseEntity.status(HttpStatus.OK).body("변경완료");
             }catch (BadRequest e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("비밀번호 오류");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
         else return tokenRecord.getResponseEntity();
     }
 
+
+    // 소개 변경
     @PutMapping("/updateIntroduce")
     public ResponseEntity<?> updateIntroduce(@RequestHeader("Authorization") String accessToken,@RequestBody UserInformationRequestDTO userInformationRequestDTO){
         TokenRecord tokenRecord = this.multiService.checkToken(accessToken);
@@ -53,6 +55,53 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.OK).body(userInformationResponseDTO);
         }catch (IllegalArgumentException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }catch (BadRequest e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+        else return tokenRecord.getResponseEntity();
+    }
+
+    //이메일 변경
+    @PutMapping("/updateEmail")
+    public ResponseEntity<?> updateEmail(@RequestHeader("Authorization") String accessToken,@RequestBody UserInformationRequestDTO userInformationRequestDTO){
+        TokenRecord tokenRecord = this.multiService.checkToken(accessToken);
+        if(tokenRecord.isOK()) try{
+            UserInformationResponseDTO userInformationResponseDTO = this.multiService.updateEmail(tokenRecord.username(),userInformationRequestDTO.email());
+            return ResponseEntity.status(HttpStatus.OK).body(userInformationResponseDTO);
+        }catch (IllegalArgumentException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }catch (BadRequest e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+        else return tokenRecord.getResponseEntity();
+    }
+
+    //닉네임 변경
+    @PutMapping("/updateNickname")
+    public ResponseEntity<?> updateNickname(@RequestHeader("Authorization") String accessToken,@RequestBody UserInformationRequestDTO userInformationRequestDTO){
+        TokenRecord tokenRecord = this.multiService.checkToken(accessToken);
+        if(tokenRecord.isOK()) try{
+            UserInformationResponseDTO userInformationResponseDTO = this.multiService.updateNickname(tokenRecord.username(),userInformationRequestDTO.nickname());
+            return ResponseEntity.status(HttpStatus.OK).body(userInformationResponseDTO);
+        }catch (IllegalArgumentException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }catch (BadRequest e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+        else return tokenRecord.getResponseEntity();
+    }
+
+    //핸드폰번호 변경
+    @PutMapping("updatePhoneNumber")
+    public ResponseEntity<?> updatePhoneNumber(@RequestHeader("Authorization") String accessToken,@RequestBody UserInformationRequestDTO userInformationRequestDTO){
+        TokenRecord tokenRecord = this.multiService.checkToken(accessToken);
+        if(tokenRecord.isOK()) try {
+            UserInformationResponseDTO userInformationResponseDTO = this.multiService.updatePhoneNumber(tokenRecord.username(),userInformationRequestDTO.phoneNumber());
+            return ResponseEntity.status(HttpStatus.OK).body(userInformationResponseDTO);
+        }catch (IllegalArgumentException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }catch (BadRequest e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
         else return tokenRecord.getResponseEntity();
     }
