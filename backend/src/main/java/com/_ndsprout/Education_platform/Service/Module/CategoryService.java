@@ -1,7 +1,7 @@
 package com._ndsprout.Education_platform.Service.Module;
 
 import com._ndsprout.Education_platform.Entity.Category;
-import com._ndsprout.Education_platform.Exceptions.DataNotFoundException;
+import com._ndsprout.Education_platform.Exception.DataNotFoundException;
 import com._ndsprout.Education_platform.Repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

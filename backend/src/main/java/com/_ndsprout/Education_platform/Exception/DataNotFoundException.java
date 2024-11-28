@@ -1,4 +1,4 @@
-package com._ndsprout.Education_platform.Exceptions;
+package com._ndsprout.Education_platform.Exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
