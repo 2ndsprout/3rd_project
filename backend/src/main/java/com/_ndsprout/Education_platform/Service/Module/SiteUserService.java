@@ -67,9 +67,12 @@ public class SiteUserService {
             SiteUser siteUser = _siteUser.get();
 
             if (!this.isMatch(nowPassword,siteUser.getPassword()))
-                throw new BadRequest("password error");
-            siteUser.setPassword(this.passwordEncoder.encode(password));
-            siteUserRepository.save(siteUser);
+                throw new BadRequest("비밀번호 틀림");
+
+            if(!nowPassword.equals(password)) {
+                siteUser.setPassword(this.passwordEncoder.encode(password));
+                siteUserRepository.save(siteUser);
+            }else throw new BadRequest("동일한 비밀번호 입력");
         }
     }
 
@@ -77,9 +80,47 @@ public class SiteUserService {
         Optional<SiteUser> _siteUser = siteUserRepository.findByUsername(username);
         if(_siteUser.isPresent()){
             SiteUser siteUser = _siteUser.get();
-            siteUser.setIntroduce(introduce);
-            return siteUserRepository.save(siteUser);
+            if(!siteUser.getIntroduce().equals(introduce)) {
+                siteUser.setIntroduce(introduce);
+                return siteUserRepository.save(siteUser);
+            }else throw new BadRequest("동일한 비밀번호 입력");
         }
         else throw new IllegalArgumentException("유저없음");
+    }
+
+    public SiteUser updateEmail(String username, String email) {
+        Optional<SiteUser> _siteUser = siteUserRepository.findByUsername(username);
+        if(_siteUser.isPresent()){
+            SiteUser siteUser = _siteUser.get();
+            if(!siteUser.getEmail().equals(email)) {
+                siteUser.setEmail(email);
+                return siteUserRepository.save(siteUser);
+            } else throw new BadRequest("동일한 이메일 입력");
+        }
+        else throw  new IllegalArgumentException("유저없음");
+    }
+
+    public SiteUser updateNickname(String username, String nickname) {
+        Optional<SiteUser> _siteUser = siteUserRepository.findByUsername(username);
+        if(_siteUser.isPresent()){
+            SiteUser siteUser = _siteUser.get();
+            if(!siteUser.getNickname().equals(nickname)){
+                siteUser.setNickname(nickname);
+                return siteUserRepository.save(siteUser);
+            }else throw new BadRequest("동일한 닉네임 입력");
+        }
+        else throw  new IllegalArgumentException("유저없음");
+    }
+
+    public SiteUser updatePhoneNumber(String username, String phoneNumber) {
+        Optional<SiteUser> _siteUser = siteUserRepository.findByUsername(username);
+        if(_siteUser.isPresent()){
+            SiteUser siteUser = _siteUser.get();
+            if(!siteUser.getPhoneNumber().equals(phoneNumber)){
+                siteUser.setPhoneNumber(phoneNumber);
+                return siteUserRepository.save(siteUser);
+            }else throw new BadRequest("동일한 핸드폰번호 입력");
+        }
+        else throw  new IllegalArgumentException("유저없음");
     }
 }
