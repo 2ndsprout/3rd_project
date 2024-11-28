@@ -6,16 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5f60d692-f74c-4539-a3eb-ae0df5d8a752" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/generated/com/_ndsprout/Education_platform/Entity/QCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Repository/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Repository/Custom/Impl/CategoryRepositoryCustomImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Repository/Custom/Impl/CategoryRepositoryCustomImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Security/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Security/DataInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Security/Jwt/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Security/Jwt/JwtTokenProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Service/Module/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Service/Module/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Service/Module/SiteUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Service/Module/SiteUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Service/MultiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/_ndsprout/Education_platform/Service/MultiService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
