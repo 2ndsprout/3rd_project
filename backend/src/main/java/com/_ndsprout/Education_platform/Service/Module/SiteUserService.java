@@ -3,8 +3,8 @@ package com._ndsprout.Education_platform.Service.Module;
 import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
 import com._ndsprout.Education_platform.Entity.SiteUser;
 import com._ndsprout.Education_platform.Enum.UserRole;
-import com._ndsprout.Education_platform.Exceptions.BadRequest;
-import com._ndsprout.Education_platform.Exceptions.DataDuplicateException;
+import com._ndsprout.Education_platform.Exception.BadRequest;
+import com._ndsprout.Education_platform.Exception.DataDuplicateException;
 import com._ndsprout.Education_platform.Repository.SiteUserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -59,5 +59,27 @@ public class SiteUserService {
 
     public Boolean isMatch(String password1, String password2){
         return passwordEncoder.matches(password1,password2);
+    }
+
+    public void updatePassword(String username,String nowPassword, String password) {
+        Optional<SiteUser> _siteUser = this.siteUserRepository.findByUsername(username);
+        if(_siteUser.isPresent()) {
+            SiteUser siteUser = _siteUser.get();
+
+            if (!this.isMatch(nowPassword,siteUser.getPassword()))
+                throw new BadRequest("password error");
+            siteUser.setPassword(this.passwordEncoder.encode(password));
+            siteUserRepository.save(siteUser);
+        }
+    }
+
+    public SiteUser updateIntroduce(String username, String introduce) {
+        Optional<SiteUser> _siteUser = siteUserRepository.findByUsername(username);
+        if(_siteUser.isPresent()){
+            SiteUser siteUser = _siteUser.get();
+            siteUser.setIntroduce(introduce);
+            return siteUserRepository.save(siteUser);
+        }
+        else throw new IllegalArgumentException("유저없음");
     }
 }

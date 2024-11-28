@@ -1,15 +1,12 @@
 package com._ndsprout.Education_platform.Service;
 
 
-import com._ndsprout.Education_platform.DTO.AuthRequestDTO;
-import com._ndsprout.Education_platform.DTO.AuthResponseDTO;
-import com._ndsprout.Education_platform.DTO.CategoryResponseDTO;
-import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
+import com._ndsprout.Education_platform.DTO.*;
 import com._ndsprout.Education_platform.Entity.Category;
 import com._ndsprout.Education_platform.Entity.SiteUser;
 import com._ndsprout.Education_platform.Enum.UserRole;
-import com._ndsprout.Education_platform.Exceptions.DataNotFoundException;
-import com._ndsprout.Education_platform.Records.TokenRecord;
+import com._ndsprout.Education_platform.Exception.DataNotFoundException;
+import com._ndsprout.Education_platform.Record.TokenRecord;
 import com._ndsprout.Education_platform.Security.CustomUserDetails;
 import com._ndsprout.Education_platform.Security.Jwt.JwtTokenProvider;
 import com._ndsprout.Education_platform.Service.Module.*;
@@ -117,12 +114,11 @@ public class MultiService {
         Category parentCategory = categoryService.findByCategoryName(categoryName);
         List<Category> categoryList = categoryService.findByParentCategoryList(parentCategory);
         List<CategoryResponseDTO> categoryResponseDTOList = new ArrayList<>();
-        for (Category category : categoryList){
+        for (Category category : categoryList) {
             categoryResponseDTOList.add(this.categoryResponseDTO(category));
         }
         return categoryResponseDTOList;
     }
-
 
 
     private CategoryResponseDTO categoryResponseDTO(Category category) {
@@ -162,10 +158,11 @@ public class MultiService {
     }
 
 
-    //유저관련
+    /**
+     * 유저관련
+     */
 
     //회원가입
-
     @Transactional
     public void signUp(UserSignUpRequestDTO userSignUpRequestDTO) {
         siteUserService.signUp(userSignUpRequestDTO);
@@ -176,17 +173,35 @@ public class MultiService {
     @Transactional
     public AuthResponseDTO login(AuthRequestDTO authRequestDTO) {
         SiteUser siteUser = siteUserService.get(authRequestDTO.username());
-        if(siteUser == null)
-            throw  new IllegalArgumentException("username");
+        if (siteUser == null)
+            throw new IllegalArgumentException("username");
 
-        if(!this.siteUserService.isMatch(authRequestDTO.password(), siteUser.getPassword()))
+        if (!this.siteUserService.isMatch(authRequestDTO.password(), siteUser.getPassword()))
 
             throw new IllegalArgumentException("password");
 
         //추후 유저 계정 잠금 기능 만들어지면 계정 활성화 여부 체크하는 로직 추가할것
 
-        String accessToken = this.jwtTokenProvider.generateAccessToken(new UsernamePasswordAuthenticationToken(new CustomUserDetails(siteUser),siteUser.getPassword()));
-        String refreshToken = this.jwtTokenProvider.generateRefreshToken(new UsernamePasswordAuthenticationToken(new CustomUserDetails(siteUser),siteUser.getPassword()));
+        String accessToken = this.jwtTokenProvider.generateAccessToken(new UsernamePasswordAuthenticationToken(new CustomUserDetails(siteUser), siteUser.getPassword()));
+        String refreshToken = this.jwtTokenProvider.generateRefreshToken(new UsernamePasswordAuthenticationToken(new CustomUserDetails(siteUser), siteUser.getPassword()));
         return AuthResponseDTO.builder().tokenType("Bearer").accessToken(accessToken).refreshToken(refreshToken).build();
+    }
+
+    public void updatePassword(String username, String nowPassword, String password) {
+        this.siteUserService.updatePassword(username, nowPassword, password);
+    }
+
+    public UserInformationResponseDTO updateIntroduce(String username, String introduce) {
+        return getUserInformationResponseDTO(this.siteUserService.updateIntroduce(username,introduce));
+    }
+
+    public UserInformationResponseDTO getUserInformationResponseDTO(SiteUser siteUser) {
+        return UserInformationResponseDTO.builder().username(siteUser.getUsername())//
+                .nickname(siteUser.getNickname())//
+                .email(siteUser.getEmail())//
+                .phoneNumber(siteUser.getPhoneNumber())//
+                .introduce(siteUser.getIntroduce())//
+                .point(siteUser.getPoint())//
+                .build();
     }
 }
