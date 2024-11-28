@@ -98,27 +98,20 @@ public class MultiService {
         if (user.getUserRole() != UserRole.ADMIN) throw new IllegalArgumentException("어드민 권한 아님");
         Category parentCategory = categoryService.findByCategoryName(parentName);
         if (parentCategory == null) throw new DataNotFoundException("부모 객체 없음");
+        Category oldCategory = categoryService.findByCategoryName(name);
+        if (oldCategory != null) throw new IllegalStateException("이미 만들어진 카테고리");
         Category category = categoryService.save(parentCategory, name);
         return this.categoryResponseDTO(category);
     }
 
     @Transactional
-    public CategoryResponseDTO getCategory(String categoryName, String username) {
+    public CategoryResponseDTO getCategory(String categoryName) {
         Category category = categoryService.findByCategoryName(categoryName);
+        if (category == null) throw new DataNotFoundException("카테고리 객체 없음");
         return this.categoryResponseDTO(category);
     }
 
     // 만약 상위 객체를 뽑아오고 싶을때 EX) : 강의 부모의 자식들
-    @Transactional
-    public List<CategoryResponseDTO> getParentCategory(String categoryName, String username) {
-        Category parentCategory = categoryService.findByCategoryName(categoryName);
-        List<Category> categoryList = categoryService.findByParentCategoryList(parentCategory);
-        List<CategoryResponseDTO> categoryResponseDTOList = new ArrayList<>();
-        for (Category category : categoryList) {
-            categoryResponseDTOList.add(this.categoryResponseDTO(category));
-        }
-        return categoryResponseDTOList;
-    }
 
 
     private CategoryResponseDTO categoryResponseDTO(Category category) {
@@ -129,7 +122,7 @@ public class MultiService {
             }
         return CategoryResponseDTO.builder()//
                 .name(category.getName()) //
-                .prentCategory(category.getParent().getName()) //
+                .prentCategory(category.getParent() != null ? category.getParent().getName() : null) //
                 .childrenResponseDTO(childrenList) //
                 .createDate(this.dateTimeTransfer(category.getCreateDate())) //
                 .modifyDate(this.dateTimeTransfer(category.getModifyDate())) //

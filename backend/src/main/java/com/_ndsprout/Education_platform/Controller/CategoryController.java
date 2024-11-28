@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/category")
@@ -41,7 +39,7 @@ public class CategoryController {
         try {
             if (tokenRecord.isOK()) {
                 String username = tokenRecord.username();
-                CategoryResponseDTO categoryResponseDTO = multiService.getCategory(categoryName, username);
+                CategoryResponseDTO categoryResponseDTO = multiService.getCategory(categoryName);
                 return ResponseEntity.status(HttpStatus.OK).body(categoryResponseDTO);
             }
         } catch (DataNotFoundException ex) {
@@ -50,19 +48,4 @@ public class CategoryController {
         return tokenRecord.getResponseEntity();
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<?> getParentCategory(@RequestHeader("Authorization") String accessToken,
-                                         @RequestHeader("CategoryName") String categoryName) {
-        TokenRecord tokenRecord = this.multiService.checkToken(accessToken);
-        try {
-            if (tokenRecord.isOK()) {
-                String username = tokenRecord.username();
-                List<CategoryResponseDTO> categoryResponseDTOList = multiService.getParentCategory(categoryName, username);
-                return ResponseEntity.status(HttpStatus.OK).body(categoryResponseDTOList);
-            }
-        } catch (DataNotFoundException ex) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-        }
-        return tokenRecord.getResponseEntity();
-    }
 }
