@@ -1,4 +1,4 @@
-package com._ndsprout.Education_platform.Records;
+package com._ndsprout.Education_platform.Record;
 
 import lombok.Builder;
 import org.springframework.http.HttpStatus;
