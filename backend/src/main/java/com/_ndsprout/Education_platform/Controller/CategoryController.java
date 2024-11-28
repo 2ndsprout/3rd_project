@@ -2,8 +2,8 @@ package com._ndsprout.Education_platform.Controller;
 
 import com._ndsprout.Education_platform.DTO.CategoryRequestDTO;
 import com._ndsprout.Education_platform.DTO.CategoryResponseDTO;
-import com._ndsprout.Education_platform.Exceptions.DataNotFoundException;
-import com._ndsprout.Education_platform.Records.TokenRecord;
+import com._ndsprout.Education_platform.Exception.DataNotFoundException;
+import com._ndsprout.Education_platform.Record.TokenRecord;
 import com._ndsprout.Education_platform.Service.MultiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -3,8 +3,8 @@ package com._ndsprout.Education_platform.Service.Module;
 import com._ndsprout.Education_platform.DTO.UserSignUpRequestDTO;
 import com._ndsprout.Education_platform.Entity.SiteUser;
 import com._ndsprout.Education_platform.Enum.UserRole;
-import com._ndsprout.Education_platform.Exceptions.BadRequest;
-import com._ndsprout.Education_platform.Exceptions.DataDuplicateException;
+import com._ndsprout.Education_platform.Exception.BadRequest;
+import com._ndsprout.Education_platform.Exception.DataDuplicateException;
 import com._ndsprout.Education_platform.Repository.SiteUserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -68,7 +68,6 @@ public class SiteUserService {
 
             if (!this.isMatch(nowPassword,siteUser.getPassword()))
                 throw new BadRequest("비밀번호 틀림");
-
             if(!nowPassword.equals(password)) {
                 siteUser.setPassword(this.passwordEncoder.encode(password));
                 siteUserRepository.save(siteUser);

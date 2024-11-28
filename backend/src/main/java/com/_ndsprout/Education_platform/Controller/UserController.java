@@ -45,6 +45,7 @@ public class UserController {
         else return tokenRecord.getResponseEntity();
     }
 
+
     // 소개 변경
     @PutMapping("/updateIntroduce")
     public ResponseEntity<?> updateIntroduce(@RequestHeader("Authorization") String accessToken,@RequestBody UserInformationRequestDTO userInformationRequestDTO){

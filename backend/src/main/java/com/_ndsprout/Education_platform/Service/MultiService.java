@@ -5,8 +5,8 @@ import com._ndsprout.Education_platform.DTO.*;
 import com._ndsprout.Education_platform.Entity.Category;
 import com._ndsprout.Education_platform.Entity.SiteUser;
 import com._ndsprout.Education_platform.Enum.UserRole;
-import com._ndsprout.Education_platform.Exceptions.DataNotFoundException;
-import com._ndsprout.Education_platform.Records.TokenRecord;
+import com._ndsprout.Education_platform.Exception.DataNotFoundException;
+import com._ndsprout.Education_platform.Record.TokenRecord;
 import com._ndsprout.Education_platform.Security.CustomUserDetails;
 import com._ndsprout.Education_platform.Security.Jwt.JwtTokenProvider;
 import com._ndsprout.Education_platform.Service.Module.*;
@@ -187,15 +187,18 @@ public class MultiService {
         return AuthResponseDTO.builder().tokenType("Bearer").accessToken(accessToken).refreshToken(refreshToken).build();
     }
 
+
     //비밀번호 변경
     public void updatePassword(String username, String nowPassword, String password) {
         this.siteUserService.updatePassword(username, nowPassword, password);
     }
 
+
     //자기소개 변경
     public UserInformationResponseDTO updateIntroduce(String username, String introduce) {
         return getUserInformationResponseDTO(this.siteUserService.updateIntroduce(username,introduce));
     }
+
 
     //유저정보 DTO만들기
     public UserInformationResponseDTO getUserInformationResponseDTO(SiteUser siteUser) {
