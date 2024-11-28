@@ -187,14 +187,20 @@ public class MultiService {
         return AuthResponseDTO.builder().tokenType("Bearer").accessToken(accessToken).refreshToken(refreshToken).build();
     }
 
+
+    //비밀번호 변경
     public void updatePassword(String username, String nowPassword, String password) {
         this.siteUserService.updatePassword(username, nowPassword, password);
     }
 
+
+    //자기소개 변경
     public UserInformationResponseDTO updateIntroduce(String username, String introduce) {
         return getUserInformationResponseDTO(this.siteUserService.updateIntroduce(username,introduce));
     }
 
+
+    //유저정보 DTO만들기
     public UserInformationResponseDTO getUserInformationResponseDTO(SiteUser siteUser) {
         return UserInformationResponseDTO.builder().username(siteUser.getUsername())//
                 .nickname(siteUser.getNickname())//
@@ -203,5 +209,21 @@ public class MultiService {
                 .introduce(siteUser.getIntroduce())//
                 .point(siteUser.getPoint())//
                 .build();
+    }
+
+    //이메일 변경
+    public UserInformationResponseDTO updateEmail(String username, String email) {
+        // TODO 이메일 인증 기능 추가할것.
+        return getUserInformationResponseDTO(this.siteUserService.updateEmail(username,email));
+    }
+
+    //닉네임 변경
+    public UserInformationResponseDTO updateNickname(String username, String nickname) {
+        return getUserInformationResponseDTO(this.siteUserService.updateNickname(username,nickname));
+    }
+
+    //핸드폰번호 변경
+    public UserInformationResponseDTO updatePhoneNumber(String username, String phoneNumber) {
+        return getUserInformationResponseDTO(this.siteUserService.updatePhoneNumber(username,phoneNumber));
     }
 }
