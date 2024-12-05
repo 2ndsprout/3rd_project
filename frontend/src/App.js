@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './layout/Header';
+import './index.css'
 
 function App() {
   return (
     <div className="App">
-      <h3>eqwe</h3>
+      <Header></Header>
+  <p className='qwe'>dsadasd</p>
+  <img src="logo192.png" alt="123" className='img' />
     </div>
   );
 }
