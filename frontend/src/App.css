@@ -1,0 +1,49 @@
+
+.APP{
+    position: relative;
+    margin: 0;
+}
+.header {
+    background-color: green;
+    width: 100vw;
+    height: 7rem;
+    position: fixed;
+    /* z-index: 1000; */
+    display: flex;
+    justify-content: flex-start; /* 아이템들을 왼쪽으로 정렬 */
+    align-items: center;
+    padding: 0.1rem;
+    gap: 15rem;
+    margin-bottom: 1rem;
+}
+
+.header-items {
+    height: 100%;
+    width: 3rem;
+    background-color: aqua;
+    margin-right: 0.5rem; /* 아이템 간의 간격 조절 */
+} 
+
+
+.header-input{
+
+        width: 500px;
+        height: 40px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 20px;
+        font-size: 16px;
+        outline: none;
+}
+
+.header-input:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, .5);
+}
+.qwe{
+    margin-top: 0;
+    padding: 0;
+}
+.img{
+    margin-top: 7rem;
+}

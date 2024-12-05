@@ -180,18 +180,15 @@ public class MultiService {
         return AuthResponseDTO.builder().tokenType("Bearer").accessToken(accessToken).refreshToken(refreshToken).build();
     }
 
-
     //비밀번호 변경
     public void updatePassword(String username, String nowPassword, String password) {
         this.siteUserService.updatePassword(username, nowPassword, password);
     }
 
-
     //자기소개 변경
     public UserInformationResponseDTO updateIntroduce(String username, String introduce) {
         return getUserInformationResponseDTO(this.siteUserService.updateIntroduce(username,introduce));
     }
-
 
     //유저정보 DTO만들기
     public UserInformationResponseDTO getUserInformationResponseDTO(SiteUser siteUser) {
