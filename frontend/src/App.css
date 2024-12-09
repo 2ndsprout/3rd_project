@@ -47,3 +47,13 @@
 .img{
     margin-top: 7rem;
 }
+.usernameInput{
+    border: black;
+    width: 10px;
+    height: 10px;
+}
+.passwordInput{
+    border: black;
+    width: 10px;
+    height: 10px;
+}
