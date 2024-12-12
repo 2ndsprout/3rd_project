@@ -4,6 +4,6 @@ cd /d %~dp0
 
 cd frontend
 
-npm start
+npm run dev
 
 pause
