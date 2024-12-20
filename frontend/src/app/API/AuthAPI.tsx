@@ -6,7 +6,7 @@ export const AuthApi = getAPI();
 AuthApi.interceptors.request.use(
     (config) => {
         const TOKEN_TYPE = localStorage.getItem("tokenType");
-        let ACCESS_TOKEN = localStorage.getItem("accessToken");
+        const ACCESS_TOKEN = localStorage.getItem("accessToken");
         config.headers["Authorization"] = `${TOKEN_TYPE} ${ACCESS_TOKEN}`;
         return config;
     },
