@@ -4,6 +4,7 @@ package com._ndsprout.Education_platform.Service;
 import com._ndsprout.Education_platform.Annotation.AuthCheck;
 import com._ndsprout.Education_platform.DTO.*;
 import com._ndsprout.Education_platform.Entity.Category;
+import com._ndsprout.Education_platform.Entity.Community;
 import com._ndsprout.Education_platform.Entity.SiteUser;
 import com._ndsprout.Education_platform.Enum.UserRole;
 import com._ndsprout.Education_platform.Exception.DataNotFoundException;
@@ -236,6 +237,32 @@ public class MultiService {
         return getUserInformationResponseDTO(this.siteUserService.updatePhoneNumber(username,phoneNumber));
     }
 
+    /**
+     * 커뮤니티
+     */
+    public void createCommunity(String username,String communityName) {
+        SiteUser siteUser = siteUserService.get(username);
+        if(!siteUser.getUserRole().equals(UserRole.ADMIN))
+            throw new AccessDeniedException("NOT ADMIN");
+        this.communityService.create(username,communityName);
+    }
 
+    /**
+     * 아티클
+     */
+
+    public void createArticle(String username, String title, String content, String communityName) {
+        SiteUser siteUser = siteUserService.get(username);
+        if(title.isEmpty()){
+            throw  new IllegalArgumentException("제목없음");
+        } else if (content.isEmpty()) {
+            throw  new IllegalArgumentException("내용없음");
+        } else if (communityName.isEmpty()) {
+            throw  new IllegalArgumentException("커뮤니티 설정 안됨");
+        }
+        Community community = communityService.get(communityName);
+
+        articleService.create(siteUser,title,content,community);
+    }
 
 }
