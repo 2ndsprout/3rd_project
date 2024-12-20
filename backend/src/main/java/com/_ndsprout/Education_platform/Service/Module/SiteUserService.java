@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,6 +23,11 @@ public class SiteUserService {
     @Transactional
     public SiteUser get(String value){
         return this.siteUserRepository.findById(value).orElse(null);
+    }
+
+    @Transactional
+    public List<SiteUser> getList(){
+        return this.siteUserRepository.findAll();
     }
 
 
