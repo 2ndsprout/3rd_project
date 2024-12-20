@@ -10,14 +10,32 @@ import com._ndsprout.Education_platform.Service.MultiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/api/user")
 public class UserController {
     private final MultiService multiService;
+
+    @GetMapping("/listUp")
+    public ResponseEntity<?> userListUp(@RequestHeader("Authorization") String accessToken) {
+        TokenRecord tokenRecord = this.multiService.checkToken(accessToken);
+        if (tokenRecord.isOK()) {
+            try {
+                List<UserInformationResponseDTO> userList = this.multiService.getUserListUp();
+                return ResponseEntity.status(HttpStatus.OK).body(userList);
+            } catch (AccessDeniedException ex) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("접근이 불가합니다.");
+            }
+        } else {
+            return tokenRecord.getResponseEntity();
+        }
+    }
+
 
     //회원가입
     @PostMapping("/SingUp")
