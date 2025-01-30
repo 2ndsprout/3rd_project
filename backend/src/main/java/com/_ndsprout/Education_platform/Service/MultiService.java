@@ -1,6 +1,7 @@
 package com._ndsprout.Education_platform.Service;
 
 
+import com._ndsprout.Education_platform.Annotation.AuthCheck;
 import com._ndsprout.Education_platform.DTO.*;
 import com._ndsprout.Education_platform.Entity.Category;
 import com._ndsprout.Education_platform.Entity.Community;
@@ -192,6 +193,23 @@ public class MultiService {
         return getUserInformationResponseDTO(this.siteUserService.updateIntroduce(username,introduce));
     }
 
+    //유저 리스트업
+    public List<SiteUser> getUserList () {
+        return this.siteUserService.getList();
+    }
+
+    //유저 리스트업 DTO
+    @AuthCheck(roles = {"ROLE_ADMIN"})
+    public List<UserInformationResponseDTO> getUserListUp() throws AccessDeniedException {
+        List<UserInformationResponseDTO> userListDTO = new ArrayList<>();
+        List<SiteUser> userList = this.siteUserService.getList();
+        for (SiteUser user : userList) {
+            userListDTO.add(this.getUserInformationResponseDTO(user));
+        }
+        return userListDTO;
+    }
+
+
     //유저정보 DTO만들기
     public UserInformationResponseDTO getUserInformationResponseDTO(SiteUser siteUser) {
         return UserInformationResponseDTO.builder().username(siteUser.getUsername())//
@@ -218,9 +236,7 @@ public class MultiService {
     public UserInformationResponseDTO updatePhoneNumber(String username, String phoneNumber) {
         return getUserInformationResponseDTO(this.siteUserService.updatePhoneNumber(username,phoneNumber));
     }
-
-
-
+    
     /**
      * 커뮤니티
      */
@@ -248,4 +264,5 @@ public class MultiService {
 
         articleService.create(siteUser,title,content,community);
     }
+
 }

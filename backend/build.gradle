@@ -53,6 +53,8 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt-gson:0.11.5'
 	// WebSocket
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	// AOP 의존성 추가
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
 }
 
 tasks.named('test') {
