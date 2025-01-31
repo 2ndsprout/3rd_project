@@ -262,7 +262,11 @@ public class MultiService {
         }
         Community community = communityService.get(communityName);
 
-        articleService.create(siteUser,title,content,community);
+        if(community == null){
+            throw  new IllegalArgumentException("커뮤니티 존재하지 않음");
+        }else{
+            articleService.create(siteUser,title,content,community);
+        }
     }
 
 }
